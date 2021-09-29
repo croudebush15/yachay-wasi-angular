@@ -1,0 +1,42 @@
+<app-header></app-header>
+<section style="background-image: url(assets/fondo.jpg)" id="inicio">
+        <div class="row">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <div class="registro">
+                    <div>
+                        <form class="padded-inicio" name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate
+                        [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                            <div class="form-group" id="textbox">
+                              <p style="text-align: center;"><strong>¡Hola te damos la bienvenida!</strong></p>
+                              <input style="border-radius: 35px; padding-top: 20px; padding-bottom: 20px; padding-left: 25px;" class="form-control"
+                              type="text"
+                              placeholder="Usuario"
+                              name="username" [(ngModel)]="model.username"
+                                #username="ngModel" required />
+                                <div *ngIf="f.submitted
+                                  && !username.valid">Debes ingresar un usuario válido.</div>                              
+                            </div>
+                            <div class="form-group" id="textbox2">
+                              <div [ngClass]="{ 'has-error': f.submitted && !password.valid }"></div>
+                              <input style="border-radius: 35px; padding-top: 20px; padding-bottom: 20px; padding-left: 25px;"
+                                class="form-control"
+                                type="password"
+                                placeholder="Contraseña"
+                                name="password" [(ngModel)]="model.password"
+                                  #password="ngModel" required />
+                              <div *ngIf="f.submitted
+                                && !password.valid">Debes ingresar una contraseña válida.</div>                              
+                            </div>
+                            <a href="#" style="color: #4a1e9a; text-decoration:none; margin-left: 10px;" ><b>¿Olvidaste tu contraseña?</b></a>
+                            <button type="submit" style="background-color: #eb6159; border-color: #eb6159;">Iniciar Sesión</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">            
+            </div>
+        </div>  
+</section>
+<app-footer></app-footer>

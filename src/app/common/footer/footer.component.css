@@ -1,0 +1,129 @@
+#main-footer
+{
+    color: #ddd;
+    margin-bottom: 0rem;
+}
+
+#primero{
+    background-color: #5115a0;
+    padding-top: 4rem;
+    padding-right: 0px;
+    padding-bottom: 4rem;
+    padding-left: 0px;
+    text-align: center;
+}
+#segundo{
+    background-color: #411180;
+    padding-top: 6rem;
+    padding-right: 0px;
+    padding-bottom: 6rem;
+    padding-left: 0px;
+    text-align: center;
+}
+
+#tercero{
+    padding-top: 8rem;
+    padding-right: 0px;
+    padding-bottom: 8rem;
+    padding-left: 0px;
+    text-align: center;
+}
+
+.bottom-foot{
+    background-color:#310c60;
+}
+
+.container {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.col-6 {
+    max-width: 50%;
+}
+
+.menu{
+    margin: 0 0 3rem;
+    padding: 0;
+    list-style: none;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.align-center {
+    justify-content: center;
+}
+
+.align-middle {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+
+.col-12{
+    max-width: 100%;
+    position: relative;
+    padding-right: 15px;
+
+}
+
+.menu.align-center li {
+    display: flex;
+    justify-content: center;
+}
+
+.menu li a{
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 700;
+    color: #fff;
+    background-color: transparent;
+}
+
+.menu a {
+    line-height: 1;
+    text-decoration: none;
+    display: block;
+    padding: .7rem 1rem;
+}
+
+.copy{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.copy p{
+    font-size: 15px;
+    color: #fff;
+    margin: 0;
+    font-weight: 500;
+}
+
+
+img{
+    max-width: 100%;
+}

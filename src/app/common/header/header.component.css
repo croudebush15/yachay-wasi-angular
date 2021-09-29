@@ -1,0 +1,23 @@
+header{
+    top:0;
+    left: 0;
+    width:100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+header ul{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+
+header ul li a{
+    padding: 6px 15 px;
+}

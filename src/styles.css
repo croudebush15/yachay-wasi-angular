@@ -1,0 +1,28 @@
+body
+{
+    font-family: 'Poppins', sans-serif;
+}
+.padded
+{
+    padding-top:90px;
+    padding-bottom:90px;
+}
+h1
+{
+    font-weight: 900;
+    font-size: 36px;
+    letter-spacing: -2px;
+}
+h2
+{
+    font-weight: 200;
+    font-size: 32px;
+    letter-spacing: -2px;
+    text-transform: lowercase;
+}
+h3
+{
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+}
