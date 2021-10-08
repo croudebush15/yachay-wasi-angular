@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 export class InicioService {
 
   private baseApiUrl = "https://yachay-wasi.herokuapp.com";
+  //private baseApiUrl = "http://localhost:8082";
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<boolean>{
+  login(username: string, password: string): Observable<any>{
     const url = `${this.baseApiUrl}/login`;
-    return this.http.post<boolean>(url, {
+    return this.http.post<any>(url, {
         username: username,
         password: password
     })

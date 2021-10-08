@@ -1,0 +1,42 @@
+.dropdown{
+    padding-top: 100px;
+    padding-right: 5rem;
+    text-align: right;
+}
+
+button{
+    padding-right:70px;
+    padding-left: 70px;
+}
+
+
+#cursos{
+    background-color: #f8f9fa;
+}
+
+.contenedor {
+    display: grid;
+    padding: 5rem;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+.course-card {
+    background-color: #fff;
+    color: #000;
+    margin: 4px;
+    transition: all 0.4s ease-in-out;
+    }
+
+.userpicture{
+    margin-right: 50%;
+}
+
+
+
+/*
+.container-fluid{
+    text-align: center;
+}
+
+*/

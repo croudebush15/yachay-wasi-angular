@@ -1,0 +1,94 @@
+<app-perfil></app-perfil>
+
+<section id="vantage" class="description main-section">
+    <div class="container">
+        <header>
+        <br><br><br>
+        <h2>Mantenimiento de Profesores</h2>
+        <p class="sub-header">Aquí se puede listar, registrar, editar y eliminar profesores.</p>
+        </header>
+        <br><br>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Agregar
+            </button>
+        </div>
+        <br>
+        <div id="formulario-actualizar">
+          <form>
+            <div class="form-group">
+              <input type="text" class="form-control" disabled>
+            </div>
+            <div class="form-group">
+              <br>
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-primary" id="boton" (click)="cerrarActualizar()">Close</button>
+            </div>
+            <br>
+          </form>
+        </div>
+        
+
+        <table class="table table-striped table-bordered">
+            <caption>Octubre 2021</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Cod</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Profesión</th>
+                    <th>Pais</th>
+                    <th>Descripción</th>
+                    <th>Email</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>José</td>
+                        <td>Zavala Rodriguez</td>
+                        <td>Profesor</td>
+                        <td>Perú</td>
+                        <td>Estudió en la Universidad Católica del Perú (PUCP).</td>
+                        <td>zavala@gmail.com</td>
+                        <td><fa-icon [icon]="faPen" (click)="seleccionar()"></fa-icon></td>
+                        <td><fa-icon [icon]="faTimes" (click)="eliminar()"></fa-icon></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+        </table>     
+        <br><br><br>
+    </div>
+</section>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Insertar Profesor</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre" >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>

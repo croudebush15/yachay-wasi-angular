@@ -10,6 +10,7 @@
                         [ngClass]="{ 'has-error': f.submitted && !username.valid }">
                             <div class="form-group" id="textbox">
                               <p style="text-align: center;"><strong>¡Hola te damos la bienvenida!</strong></p>
+                              <p *ngIf="loginError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
                               <input style="border-radius: 35px; padding-top: 20px; padding-bottom: 20px; padding-left: 25px;" class="form-control"
                               type="text"
                               placeholder="Usuario"

@@ -1,0 +1,138 @@
+/*banner*/
+
+h1{
+    font-size: 70px;
+    font-weight: 600;
+    line-height: 80px;
+    padding-top: 100px;
+    padding-left:30%;
+    color: #5115a0; 
+
+}
+
+fa-icon{
+    margin-right: 30px;
+}
+
+#hero{
+    background-image: url('/assets/banner.jpg');
+    background-size: cover;
+    padding-top: 90px;
+    padding-bottom: 150px;
+    color: #ffffff;
+}
+
+.bar{
+    width: auto;
+    height: auto;
+}
+
+.content-center{
+    max-width:800px; 
+    text-align: right;
+}
+
+button{
+    background-color: transparent;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 70px;
+    padding-right: 70px;
+    border-color: #51d1f6; 
+    border-radius: 50px;
+    font-size: 20px;
+    color: #51d1f6;
+}
+
+.container{
+    text-align: right;
+    margin-right: 50px;
+
+}
+
+
+/*SECTION*/
+
+h2{
+    font-size: 48px;
+    color: #292929;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+header {
+    text-align: center;
+}
+
+.main-section header p {
+    width: 75%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.sub-header {
+    color: #666;
+    font-size: 18px; 
+}
+
+.btn-section1{
+    margin: 15px;
+    padding: 20px;
+    padding-left: 170px;
+    padding-right: 170px;
+    background-color: #ff5452;
+    color: white;
+    border: white;
+}
+
+button.btn-section1:hover{
+    background-color: #bb423a;
+    color: white;
+    border-color: #ff5454;
+}
+
+.btn-section2{
+    margin: 15px;
+    padding: 20px;
+    padding-left: 170px;
+    padding-right: 170px;
+    border-color: #ff5452;
+    color: #ff5452;
+    border-style: #ff5452;
+
+}
+
+button.btn-section2:hover{
+    background-color:#e2dcdc;
+    color:white;
+    border-color: #e2dcdc;
+}
+
+
+li{
+    list-style: none;
+}
+
+
+/*graph*/
+
+.graph-1{
+    width: 200px;
+    position:absolute;
+    right:0;
+}
+
+.graph-2{
+    width: 200px;
+    position:absolute;
+    left:0;
+}
+
+#region-main{
+    min-height: 655px;
+
+}

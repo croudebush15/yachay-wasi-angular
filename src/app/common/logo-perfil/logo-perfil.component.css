@@ -1,0 +1,122 @@
+#snap-home.logo{
+  background-image: url(/assets/logo.jpg);
+  display: inline-block;
+  height: 45px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left center;
+}
+
+#snap-home{
+  padding: 4em 0;
+  width: 19em;
+  max-width: 17%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pull-right{
+  float: right;
+}
+
+.js-only{
+  transition: all 0.45s ease-in-out;
+}
+
+
+.userpicture{
+    width: 5em;
+    margin-right: 2%;
+}
+
+img.userpicture{
+    margin-right: .5em;
+    margin-top: 0px;
+}
+
+#snap-perfil{
+  margin-top: 45px;
+}
+
+.userpicture{
+    border-radius: 50%;
+}
+
+img.userpicture{
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-style: none;
+}
+
+#snap-pm-user-profile{
+    color:#ff8028;
+    padding-top: 2px;
+}
+
+.h1{
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+a{
+    color: #ff8028;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+
+
+
+
+/*buscador*/
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
+
+html{
+  background:#DAD0BE;
+}
+body{
+  font-size:30px;
+}
+#container{
+  margin:auto;
+  padding:3em 0 0;
+  text-align:center;
+}
+#searchform{
+  display:inline;
+  font-size:1em;
+  border-radius: 8em;
+  border:0.1em solid orange;
+  box-shadow:0 0 0.3em #ff8028;
+  padding:0.3em;
+  background:white;
+}
+#s{
+  transition:all 0.2s ease-out;
+  width:1px;
+  border-radius:0;
+  box-shadow:none;
+  outline: none;
+  padding:0;
+  margin:0;
+  border:0;
+  background-color: transparent;
+  opacity:0;
+}
+#s:focus{
+  width:8em;
+  opacity:1;
+}
+label{
+  padding-left: 1px;
+  display:inline-block;
+  margin-top:0.3em;
+  color:rgba(218,208,190,1);
+  text-shadow:0 0 0.1em rgba(60,60,60,0.3);
+  position: relative;
+  left:0.1em;
+}

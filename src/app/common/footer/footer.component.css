@@ -4,28 +4,20 @@
     margin-bottom: 0rem;
 }
 
+.container{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #primero{
     background-color: #5115a0;
-    padding-top: 4rem;
-    padding-right: 0px;
-    padding-bottom: 4rem;
-    padding-left: 0px;
-    text-align: center;
-}
-#segundo{
-    background-color: #411180;
-    padding-top: 6rem;
-    padding-right: 0px;
-    padding-bottom: 6rem;
-    padding-left: 0px;
-    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #tercero{
-    padding-top: 8rem;
-    padding-right: 0px;
-    padding-bottom: 8rem;
-    padding-left: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -33,24 +25,8 @@
     background-color:#310c60;
 }
 
-.container {
-    max-width: 100%;
-    padding-left: 24px;
-    padding-right: 24px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .row {
-    display: flex;
     flex-wrap: wrap;
-    margin-left: -15px;
-}
-
-.col {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
 }
 
 .col-6 {
@@ -77,14 +53,6 @@
 
 .text-center {
     text-align: center!important;
-}
-
-
-.col-12{
-    max-width: 100%;
-    position: relative;
-    padding-right: 15px;
-
 }
 
 .menu.align-center li {
@@ -123,7 +91,3 @@
     font-weight: 500;
 }
 
-
-img{
-    max-width: 100%;
-}

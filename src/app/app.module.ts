@@ -5,11 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { HeaderComponent } from './common/header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
 import { InicioService } from './inicio/service/inicio-service.service';
+import { MainNavComponent } from './common/main-nav/main-nav.component';
+import { PerfilComponent } from './common/perfil/perfil.component';
+import { MantProfesorComponent } from './mant-profesor/mant-profesor.component';
+import { LogoPerfilComponent } from './common/logo-perfil/logo-perfil.component';
+import { ClaseComponent } from './clase/clase.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageComponent } from './page/page.component';
 
 
 @NgModule({
@@ -18,13 +25,21 @@ import { InicioService } from './inicio/service/inicio-service.service';
     InicioComponent,
     FooterComponent,
     HeaderComponent,
-    DashboardComponent
+    MainNavComponent,
+    PerfilComponent,
+    MantProfesorComponent,
+    LogoPerfilComponent,
+    ClaseComponent,
+    DashboardComponent,
+    PageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     InicioService

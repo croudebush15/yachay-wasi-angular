@@ -1,0 +1,53 @@
+.pagina-principal{
+    padding-top: 50px;
+}
+.nav-link{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+}
+#padding{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.input-group{
+    padding-bottom: 20px;
+}
+p{
+    padding-top: 10px;
+}
+#caja{
+    width: 30%;
+    border-radius: 30px;
+    padding: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+h5{
+    font-size: 20px;
+    font-weight: 900;
+    color: #363636;
+    padding-bottom: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.icono{
+    text-align: center;
+}
+a i{
+    padding: 30px;
+    font-size: 80px;
+    text-decoration: none;
+    color: #CACACA;
+}
+a{
+    text-decoration: none;
+}
+a p{
+    color: black;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
