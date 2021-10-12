@@ -23,7 +23,6 @@ export class TokenInterceptor implements HttpInterceptor {
         return next.handle(req);
     }
 
-    // Get the auth header from the service.
     const authHeader = sessionStorage.getItem("token");
     if (authHeader) {
         // Clone the request to add the new header.
@@ -31,8 +30,6 @@ export class TokenInterceptor implements HttpInterceptor {
         // Pass on the cloned request instead of the original request.
         return next.handle(authReq);
     }
-
     return next.handle(req);
-
 }
 }
