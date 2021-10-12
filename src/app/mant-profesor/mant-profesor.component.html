@@ -33,26 +33,22 @@
             <caption>Octubre 2021</caption>
             <thead class="thead-dark">
                 <tr>
-                    <th>Cod</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Profesión</th>
-                    <th>Pais</th>
-                    <th>Descripción</th>
-                    <th>Email</th>
-                    <th></th>
-                    <th></th>
+                    <th *ngFor = "let column of headers">
+                        {{ column }}
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>José</td>
-                        <td>Zavala Rodriguez</td>
-                        <td>Profesor</td>
-                        <td>Perú</td>
-                        <td>Estudió en la Universidad Católica del Perú (PUCP).</td>
-                        <td>zavala@gmail.com</td>
+                    <tr *ngFor = "let user of users">
+                        <td>{{ user.teacher.firstName }}</td>
+                        <td>{{ user.teacher.lastName }}</td>
+                        <td>{{ user.username}}</td>
+                        <td>{{ user.teacher.role }}</td>
+                        <td>{{ user.teacher.document_number }}</td>
+                        <td>{{ user.teacher.birthDate }}</td>
+                        <td>{{ user.teacher.phone }}</td>
+                        <td>{{ user.teacher.email }}</td>
+                        <td>{{ user.teacher.address }}</td>
                         <td><fa-icon [icon]="faPen" (click)="seleccionar()"></fa-icon></td>
                         <td><fa-icon [icon]="faTimes" (click)="eliminar()"></fa-icon></td>
                         <td></td>

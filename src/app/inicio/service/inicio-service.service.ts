@@ -1,20 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InicioService {
 
-  private baseApiUrl = "https://yachay-wasi.herokuapp.com";
-  //private baseApiUrl = "http://localhost:8082";
+  private url = `${environment.baseApiUrl}/login`;
 
   constructor(private http: HttpClient) { }
 
   login(username: string, password: string): Observable<any>{
-    const url = `${this.baseApiUrl}/login`;
-    return this.http.post<any>(url, {
+    return this.http.post<any>(this.url, {
         username: username,
         password: password
     })

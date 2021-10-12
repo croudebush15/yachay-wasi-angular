@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './common/footer/footer.component';
@@ -17,6 +17,8 @@ import { LogoPerfilComponent } from './common/logo-perfil/logo-perfil.component'
 import { ClaseComponent } from './clase/clase.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageComponent } from './page/page.component';
+import { TokenInterceptor } from './auth/token.interceptor';
+import { MantProfesorService } from './mant-profesor/service/mant-profesor.service';
 
 
 @NgModule({
@@ -42,7 +44,13 @@ import { PageComponent } from './page/page.component';
     FontAwesomeModule
   ],
   providers: [
-    InicioService
+    InicioService,
+    MantProfesorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })
