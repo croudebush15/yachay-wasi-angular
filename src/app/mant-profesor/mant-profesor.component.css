@@ -42,3 +42,8 @@ p.sub-header {
 .form-group{
     padding: 5px;
 }
+
+fa-icon{
+    justify-content: center;
+    display: flex;
+}

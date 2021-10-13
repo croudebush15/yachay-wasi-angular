@@ -10,14 +10,26 @@
         <br><br>
         <div class="form-group">
             <button type="button" class="btn btn-primary" (click)="agregarModal()">Agregar</button>
-        </div>
-        <br>        
-        <table class="table table-striped table-bordered">
-            <caption>Octubre 2021</caption>
+            <mat-button-toggle-group style="float: right;" #group="matButtonToggleGroup" [value]="selectedButton" (change)="onValChange(group.value)" >
+              <mat-button-toggle value="active">Activos</mat-button-toggle>
+              <mat-button-toggle value="inactive">Inactivos</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>        
+
+        <br>     
+        <h1 *ngIf=isLoading>Cargando...</h1>   
+        <table *ngIf="!isLoading" class="table table-striped table-bordered">
+            <!-- <caption>Octubre 2021</caption> -->
             <thead class="thead-dark">
                 <tr>
                     <th *ngFor = "let column of headers">
                         {{ column }}
+                    </th>
+                    <th>
+                      <div *ngIf="selectedButton==='active'; then deactivate else activate">
+                      </div>        
+                      <ng-template #deactivate>Desactivar</ng-template>        
+                      <ng-template #activate>Activar</ng-template>
                     </th>
                 </tr>
                 </thead>
@@ -33,7 +45,15 @@
                         <td>{{ user.teacher.email }}</td>
                         <td>{{ user.teacher.address }}</td>
                         <td><fa-icon [icon]="faPen" (click)="editarModal(user)"></fa-icon></td>
-                        <td><fa-icon [icon]="faTimes" (click)="eliminar(user)"></fa-icon></td>
+                        <div *ngIf="selectedButton==='active'; then eliminar else restaurar">
+                        </div>        
+                        <ng-template #eliminar>
+                          <td><fa-icon [icon]="faTimes" (click)="delete(user)"></fa-icon></td>
+                        </ng-template>        
+                        <ng-template #restaurar>
+                          <td><fa-icon [icon]="faTrashRestore" (click)="restore(user)"></fa-icon></td>
+                        </ng-template>
+                        
                     </tr>
                 </tbody>
         </table>     
@@ -47,7 +67,7 @@
       <div class="modal-content">
       <div class="modal-header">
           
-          <div *ngIf="editModal; then editar else agregar">
+        <div *ngIf="editModal; then editar else agregar">
         </div>        
         <ng-template #editar>
           <h5 class="modal-title">Editar usuario</h5>
@@ -66,7 +86,7 @@
                   [(ngModel)]="newUser.username"
                   required>
             </div>
-            <div *ngIf="!editModal" class="form-group">
+            <div *ngIf="modalType === 'create' || modalType === 'restore'" class="form-group">
               <input type="text" class="form-control" placeholder="Contraseña" name="password"             
                   [(ngModel)]="newUser.password"
                   required>
@@ -109,7 +129,7 @@
             </div>          
         </div>
           <div class="modal-footer">
-            <div *ngIf="editModal; then editUser else createUser">
+            <div *ngIf="modalType === 'edit'; then editUser else createUser">
             </div>        
             <ng-template #editUser>
               <button type="submit" class="btn btn-primary" >Editar</button>

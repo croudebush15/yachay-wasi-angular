@@ -13,8 +13,9 @@ export class MantProfesorService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any>{
-    return this.http.get<any>(this.url + 's');
+  getUsers(status: String): Observable<any>{
+    if (status === "inactive") return this.http.get<any>(this.url + "s/inactive");    
+    else return this.http.get<any>(this.url + 's');
   }
   
   createUser(user: User): Observable<any>{
@@ -29,5 +30,9 @@ export class MantProfesorService {
 
   removeUser(user: User): Observable<any>{
     return this.http.delete<any>(this.url + "/" + user.id, {observe: 'response'});
+  }
+
+  restoreUser(user: User): Observable<any>{
+    return this.http.post<any>(this.url + "/restore", user, {observe: 'response'});
   }
 }

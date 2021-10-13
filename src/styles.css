@@ -26,3 +26,6 @@ h3
     font-size: 20px;
     text-transform: uppercase;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -19,6 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageComponent } from './page/page.component';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { MantProfesorService } from './mant-profesor/service/mant-profesor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { MantProfesorService } from './mant-profesor/service/mant-profesor.servi
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    MatButtonToggleModule
   ],
   providers: [
     InicioService,
