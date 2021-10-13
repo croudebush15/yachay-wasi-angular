@@ -21,6 +21,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { MantProfesorService } from './mant-profesor/service/mant-profesor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MantCursoComponent } from './mant-curso/mant-curso.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     LogoPerfilComponent,
     ClaseComponent,
     DashboardComponent,
-    PageComponent
+    PageComponent,
+    MantCursoComponent
   ],
   imports: [
     BrowserModule,

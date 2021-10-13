@@ -6,6 +6,10 @@
             <div id="menu">
                 <a class="p">Perfil</a>
                 <a class="p" href="inicio">Salir</a>
+                <div *ngIf = "teacher.role === 'ADMIN'">
+                    <a class="p" href="profesores">Profesor</a>
+                    <a class="p" href="cursos">Curso</a>
+                </div>                
             </div>           
         </a>
         

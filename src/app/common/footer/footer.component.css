@@ -1,32 +1,47 @@
 #main-footer
 {
-    color: #ddd;
-    margin-bottom: 0rem;
-}
-
-.container{
-    margin-left: auto;
-    margin-right: auto;
+    color: white;
 }
 
 #primero{
-    background-color: #5115a0;
+    background-color: #81308C;
     padding-top: 20px;
+    padding-right: 0px;
     padding-bottom: 20px;
+    padding-left: 0px;
+    text-align: center;
 }
 
 #tercero{
     padding-top: 20px;
+    padding-right: 0px;
     padding-bottom: 20px;
+    padding-left: 0px;
     text-align: center;
 }
 
 .bottom-foot{
-    background-color:#310c60;
+    background-color:#731F5C;
+}
+
+.container {
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .row {
+    display: flex;
     flex-wrap: wrap;
+    margin-left: -15px;
+}
+
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
 }
 
 .col-6 {
@@ -55,6 +70,14 @@
     text-align: center!important;
 }
 
+
+.col-12{
+    max-width: 100%;
+    position: relative;
+    padding-right: 15px;
+
+}
+
 .menu.align-center li {
     display: flex;
     justify-content: center;
@@ -65,7 +88,7 @@
     padding-left: 10px;
     padding-right: 10px;
     font-weight: 700;
-    color: #fff;
+    color: white;
     background-color: transparent;
 }
 
@@ -86,8 +109,12 @@
 
 .copy p{
     font-size: 15px;
-    color: #fff;
+    color: white;
     margin: 0;
     font-weight: 500;
 }
 
+
+img{
+    max-width: 100%;
+}
