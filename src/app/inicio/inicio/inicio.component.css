@@ -13,17 +13,17 @@
 {
     margin-top: 180px;
     margin-bottom: auto;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
     background-color: #fff;
     border-radius: 35px;
 }
 .padded-inicio
 {
-    padding-top: 50px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 25px;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
 }
 button
 {
