@@ -21,6 +21,7 @@ import { TokenInterceptor } from './auth/token.interceptor';
 import { MantProfesorService } from './mant-profesor/service/mant-profesor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
 
@@ -49,7 +50,8 @@ import { MantSalonComponent } from './mant-salon/mant-salon.component';
     ReactiveFormsModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule
   ],
   providers: [
     InicioService,

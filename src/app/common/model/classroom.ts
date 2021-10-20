@@ -1,4 +1,5 @@
 import { Course } from "./course";
+import { Teacher } from "./teacher";
 
 export class Classroom {
     id!: number;
@@ -8,4 +9,5 @@ export class Classroom {
     course!: Course;
     horaF!: string;
     horaI!: string;
+    teacher!: Teacher;
 }

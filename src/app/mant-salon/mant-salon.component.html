@@ -26,11 +26,11 @@
                 <tbody>
                     <tr *ngFor = "let classroom of classrooms">
                         <td>{{ classroom.name }}</td>
-                        <td>{{ classroom.numberOfStudents }}</td>
                         <td>{{ classroom.dayOfWeek }}</td>
                         <td>{{ classroom.course.name }}</td>
-                        <td>{{ classroom.horaI}}</td>
-                        <td>{{ classroom.horaF}}</td>
+                        <td>{{ classroom.teacher.firstName}} {{ classroom.teacher.lastName }}</td>
+                        <td>{{ classroom.horaI }}</td>
+                        <td>{{ classroom.horaF }}</td>
                         <td><fa-icon [icon]="faPen" (click)="editarModal(classroom)"></fa-icon></td>
                         <td><fa-icon [icon]="faTimes" (click)="deleteClassroom(classroom)"></fa-icon></td>                        
                     </tr>
@@ -57,24 +57,54 @@
           <h5 class="modal-title">Agregar nuevo salon</h5>
         </ng-template>
           <button type="button" class="btn-close" (click)="closeModal()"></button>
-          <br>          
+          <br>                    
         </div>
         <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
         <form ngNativeValidate (ngSubmit)=submit()>
           <div class="modal-body">          
             <h3>Curso</h3>
             <div class="form-group">
-              <span>Nombre</span>
+              <span>NRC</span>
               <input type="text" class="form-control" placeholder="Nombre" name="name"
                   [(ngModel)]="newClassroom.name"
                   required>
             </div>
             <div class="form-group">
-              <span>Descripción</span>
-              <input type="text" class="form-control" placeholder="Descripción" name="dayOfWeek"             
-                  [(ngModel)]="newClassroom.dayOfWeek"
-                  required>
-            </div>            
+              <span>Dia de Semana</span>
+              <br>
+              <select matNativeControl required [(ngModel)]="newClassroom.dayOfWeek" name="dayOfWeek">
+                <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
+              </select>
+            </div>       
+            <div class="form-group">
+              <span>Curso</span>
+              <br>
+              <select matNativeControl required [(ngModel)]="selectedCourse" name="course">
+                <option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</option>
+              </select>
+            </div>  
+            <div class="form-group">
+              <span>Profesor</span>
+              <br>
+              <select matNativeControl required [(ngModel)]="selectedTeacher" name="teacher">
+                <option *ngFor="let teacher of teachers" [value]="teacher.idTeacher">{{ teacher.firstName }} {{ teacher.lastName }}</option>
+              </select>
+            </div> 
+            <div class="form-group">
+              <span>Hora Inicio</span>
+              <br>
+              <select matNativeControl required [(ngModel)]="newClassroom.horaI" name="horaI">
+                <option *ngFor="let hourI of scheduleInicio" [value]="hourI">{{ hourI }}</option>
+              </select>
+            </div>   
+            <div class="form-group">
+              <span>Hora Fin</span>
+              <br>
+              <select matNativeControl required  [(ngModel)]="newClassroom.horaF" name="horaF">
+                <option *ngFor="let hourF of schedulFin" [value]="hourF" >{{ hourF }}</option>
+              </select>
+            </div>    
+                 
         </div>
           <div class="modal-footer">
             <div *ngIf="modalType === 'edit'; then editUser else createUser">

@@ -16,6 +16,10 @@ export class MantSalonService {
   getClassrooms(): Observable<any>{
     return this.http.get<any>(this.url + '/all');
   }
+
+  getTeachers(): Observable<any>{
+    return this.http.get<any>(this.url  + '/teacher');
+  }
   
   createClassrooms(classroom: Classroom): Observable<any>{    
     return this.http.post<any>(this.url, classroom, {observe: 'response'});

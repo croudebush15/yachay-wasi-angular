@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Classroom } from '../common/model/classroom';
+import { Course } from '../common/model/course';
+import { Teacher } from '../common/model/teacher';
+import { MantCursoService } from '../mant-curso/service/mant-curso.service';
 import { MantSalonService } from './service/mant-salon.service';
 declare var $:any; 
 
@@ -20,16 +23,24 @@ export class MantSalonComponent implements OnInit {
   isError: boolean = false;
   editModal: boolean = false;
   modalType: string = "create";
-  headers = ["NRC", "Cantidad Alumnos","Día de Semana","Nombre Curso","Hora Inicio","Hora Fin","Editar","Eliminar"]; 
+  headers = ["NRC","Día de Semana","Nombre Curso","Nombre Profesor","Hora Inicio","Hora Fin","Editar","Eliminar"]; 
+  scheduleInicio = ["7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00"];
+  schedulFin = ["8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+  daysOfWeek = ["lun","mar","mie","jue","vie"];
   classrooms: Classroom[] = [];
   newClassroom: Classroom = new Classroom();
+  courses: Course[] = [];
+  teachers: Teacher[] = [];
+  selectedCourse: number = 0;
+  selectedTeacher: number = 0;
 
-  constructor(private service: MantSalonService) { }
+  constructor(private service: MantSalonService, 
+              private courseService: MantCursoService) { }
 
   ngOnInit(): void {
     this.isLoading = true;
     window.scroll(0,0);
-    this.getClassrooms();
+    this.getClassrooms();    
   }
 
   getClassrooms(){
@@ -40,6 +51,13 @@ export class MantSalonComponent implements OnInit {
         this.isLoading = false;
       });
     }, 500);  
+    this.courseService.getCourses().subscribe(res => {
+      this.courses = res;
+    });
+
+    this.service.getTeachers().subscribe(res => {
+      this.teachers = res;
+    });
   }
 
   submit(){
@@ -56,6 +74,26 @@ export class MantSalonComponent implements OnInit {
   }
 
   createClassroom(){
+    if(this.selectedCourse === 0){
+      this.isError = true;
+      return;
+    } 
+    let selectedCourseObject = this.courses.find(course=>course.id == this.selectedCourse)
+    if (selectedCourseObject === undefined) {
+      this.isError = true;
+      return;
+    }
+    if(this.selectedTeacher === 0){
+      this.isError = true;
+      return;
+    } 
+    let selectedTeacherObject = this.teachers.find(teacher=>teacher.idTeacher == this.selectedTeacher)
+    if (selectedTeacherObject === undefined) {
+      this.isError = true;
+      return;
+    }
+    this.newClassroom.course = selectedCourseObject || new Course();
+    this.newClassroom.teacher = selectedTeacherObject || new Teacher();
     this.service.createClassrooms(this.newClassroom).subscribe(res => {
       this.getClassrooms();
       this.closeModal();      
@@ -101,6 +139,8 @@ export class MantSalonComponent implements OnInit {
   editarModal(classroom: Classroom){
     this.newClassroom = classroom;
     this.modalType = "edit";
+    this.selectedCourse = classroom.course.id;
+    this.selectedTeacher = classroom.teacher.idTeacher;
     $('#modal').modal('show');
   }
 

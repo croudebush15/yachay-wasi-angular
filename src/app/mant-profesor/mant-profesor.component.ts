@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 import { faPen, faTimes, faTrashRestore } from '@fortawesome/free-solid-svg-icons';
 import { Teacher } from '../common/model/teacher';
 import { User } from '../common/model/user';
