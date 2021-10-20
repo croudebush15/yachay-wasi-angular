@@ -87,6 +87,9 @@ export class MantProfesorComponent implements OnInit {
         this.getUsers();
         this.closeModal();
       } 
+    },
+    error => {
+      this.isError = true;
     });
     this.newUser = new User();
     this.newUser.teacher = new Teacher();
@@ -100,6 +103,9 @@ export class MantProfesorComponent implements OnInit {
         this.getUsers();
         this.closeModal();
       } 
+    },
+    error => {
+      this.isError = true;
     });
     this.newUser = new User();
     this.newUser.teacher = new Teacher();

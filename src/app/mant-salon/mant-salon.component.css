@@ -1,0 +1,36 @@
+h2{
+    font-size: 48px;
+    color: #292929;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 60px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.main-section header {
+    text-align: center;
+}
+
+.main-section header p {
+    width: 75%;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.sub-header {
+    color: #666;
+    font-size: 18px; 
+}
+
+.description {
+    background-color: #f9f9f9;
+}
+#boton{
+    margin-left: 15px;
+}
+
+#formulario-actualizar{
+    display: none;
+}

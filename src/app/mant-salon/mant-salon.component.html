@@ -1,11 +1,10 @@
 <app-perfil></app-perfil>
-
 <section id="vantage" class="description main-section">
     <div class="container">
         <header>
         <br><br><br>
-        <h2>Mantenimiento de Cursos</h2>
-        <p class="sub-header">Aquí se puede listar, registrar, editar y eliminar cursos.</p>
+        <h2>Mantenimiento de Salones</h2>
+        <p class="sub-header">Aquí se puede listar, registrar, editar y eliminar salones.</p>
         </header>
         <br><br>
         <div class="form-group">
@@ -25,11 +24,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor = "let course of courses">
-                        <td>{{ course.name }}</td>
-                        <td>{{ course.description }}</td>
-                        <td><fa-icon [icon]="faPen" (click)="editarModal(course)"></fa-icon></td>
-                        <td><fa-icon [icon]="faTimes" (click)="deleteCourse(course)"></fa-icon></td>                        
+                    <tr *ngFor = "let classroom of classrooms">
+                        <td>{{ classroom.name }}</td>
+                        <td>{{ classroom.numberOfStudents }}</td>
+                        <td>{{ classroom.dayOfWeek }}</td>
+                        <td>{{ classroom.course.name }}</td>
+                        <td>{{ classroom.horaI}}</td>
+                        <td>{{ classroom.horaF}}</td>
+                        <td><fa-icon [icon]="faPen" (click)="editarModal(classroom)"></fa-icon></td>
+                        <td><fa-icon [icon]="faTimes" (click)="deleteClassroom(classroom)"></fa-icon></td>                        
                     </tr>
                 </tbody>
         </table>     
@@ -48,10 +51,10 @@
         <div *ngIf="editModal; then editar else agregar">
         </div>        
         <ng-template #editar>
-          <h5 class="modal-title">Editar Curso</h5>
+          <h5 class="modal-title">Editar Salon</h5>
         </ng-template>        
         <ng-template #agregar>
-          <h5 class="modal-title">Agregar nuevo curso</h5>
+          <h5 class="modal-title">Agregar nuevo salon</h5>
         </ng-template>
           <button type="button" class="btn-close" (click)="closeModal()"></button>
           <br>          
@@ -63,13 +66,13 @@
             <div class="form-group">
               <span>Nombre</span>
               <input type="text" class="form-control" placeholder="Nombre" name="name"
-                  [(ngModel)]="newCourse.name"
+                  [(ngModel)]="newClassroom.name"
                   required>
             </div>
             <div class="form-group">
               <span>Descripción</span>
-              <input type="text" class="form-control" placeholder="Descripción" name="description"             
-                  [(ngModel)]="newCourse.description"
+              <input type="text" class="form-control" placeholder="Descripción" name="dayOfWeek"             
+                  [(ngModel)]="newClassroom.dayOfWeek"
                   required>
             </div>            
         </div>
@@ -88,6 +91,4 @@
       </div>
     </div>
   </div>
-
-
-  <app-footer></app-footer>
+<app-footer></app-footer>

@@ -22,6 +22,7 @@ import { MantProfesorService } from './mant-profesor/service/mant-profesor.servi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
+import { MantSalonComponent } from './mant-salon/mant-salon.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MantCursoComponent } from './mant-curso/mant-curso.component';
     ClaseComponent,
     DashboardComponent,
     PageComponent,
-    MantCursoComponent
+    MantCursoComponent,
+    MantSalonComponent
   ],
   imports: [
     BrowserModule,
