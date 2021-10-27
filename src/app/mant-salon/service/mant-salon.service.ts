@@ -13,8 +13,9 @@ export class MantSalonService {
 
   constructor(private http: HttpClient) { }
 
-  getClassrooms(): Observable<any>{
-    return this.http.get<any>(this.url + '/active');
+  getClassrooms(status: Boolean): Observable<any>{
+    if (status) return this.http.get<any>(this.url + '/active'); 
+    else return this.http.get<any>(this.url + "/inactive");  
   }
 
   getTeachers(): Observable<any>{

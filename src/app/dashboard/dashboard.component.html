@@ -37,11 +37,13 @@
             <img class="user-picture" src="/assets/profile_6.png" style="width: 100%; text-align: center; width: 4rem;
             height: 4rem;"/>
         </div>  -->
-            <div class="card-body">
-              <a href="clase"><h5 class="card-title">{{ classroom.course.name }} ({{ classroom.name }})</h5></a>
-              <span *ngIf="classroom.dayOfWeek === 'lun'">Día: Lunes </span>
-              <span *ngIf="classroom.dayOfWeek === 'mie'">Día: Miércoles </span>
-              <span *ngIf="classroom.dayOfWeek === 'vie'">Día: Viernes </span>
+            <div class="card-body" [ngSwitch]="classroom.dayOfWeek">
+              <a href="clase"><h5 class="card-title">{{ classroom.course.name }} ({{ classroom.id }})</h5></a>
+              <span *ngSwitchCase="'lun'">Día: Lunes </span>
+              <span *ngSwitchCase="'mar'">Día: Martes </span>
+              <span *ngSwitchCase="'mie'">Día: Miércoles </span>
+              <span *ngSwitchCase="'jue'">Día: Jueves </span>
+              <span *ngSwitchCase="'vie'">Día: Viernes </span>
               <br>
               <span> Hora: {{ classroom.horaI }}</span>
               <span> {{ classroom.horaF }}</span>

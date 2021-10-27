@@ -53,7 +53,7 @@ export class MantSalonComponent implements OnInit {
   getClassrooms(){
     this.isLoading = true;
     setTimeout(() => {
-      this.service.getClassrooms().subscribe(res => {
+      this.service.getClassrooms(true).subscribe(res => {
         this.classrooms = res;
         this.isLoading = false;
       });

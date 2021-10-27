@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { faPen, faTimes, faTrashRestore } from '@fortawesome/free-solid-svg-icons';
+import { modalType } from '../common/model/modal';
 import { Teacher } from '../common/model/teacher';
 import { User } from '../common/model/user';
 import { MantProfesorService } from './service/mant-profesor.service';
@@ -21,9 +22,10 @@ export class MantProfesorComponent implements OnInit {
 
   isLoading: boolean = false;
   isError: boolean = false;
-  editModal: boolean = false;
-  modalType: string = "create";
-  selectedButton: string = "active";
+  //editModal: boolean = false;
+  modal: modalType = modalType.create;
+  allModalTypes = modalType;
+  selectedButton: boolean = true;
   headers = ["Nombre", "Apellido", "Usuario", "Rol", "Número Documento", "Fecha de Nacimiento", "Teléfono", "Correo", "Dirección","Editar"];
   users: User[] = [];
   newUser: User = new User();
@@ -33,7 +35,7 @@ export class MantProfesorComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.selectedButton = "active";
+    this.selectedButton = true;
     window.scroll(0,0);
     this.newUser.teacher = new Teacher();
     this.getUsers();
@@ -50,14 +52,14 @@ export class MantProfesorComponent implements OnInit {
   }
 
   submit(){
-    switch(this.modalType){
-      case "create":
+    switch(this.modal){
+      case modalType.create:
         this.createUser();
         break;
-      case "edit":
+      case modalType.edit:
         this.editUser();
         break;
-      case "restore":
+      case modalType.restore:
         this.retoreUser();
         break;
       default:
@@ -112,7 +114,7 @@ export class MantProfesorComponent implements OnInit {
 
 
   delete(user: User){
-    if(confirm("¿Eliminar usuario " + user.username + "?")) {
+    if(confirm("¿Desactivar usuario " + user.username + "?")) {
       this.service.removeUser(user).subscribe(res => {
         if (res.status !== 200) alert("Usuario no se ha eliminado correctamente.");       
       });
@@ -122,12 +124,12 @@ export class MantProfesorComponent implements OnInit {
 
   restore(user: User){
     this.newUser = user;
-    this.modalType = "restore";
+    this.modal = modalType.restore;
     $('#modal').modal('show');
   }
 
   agregarModal(){
-    this.modalType = "create";
+    this.modal = modalType.create;
     $('#modal').modal('show');
   }
 
@@ -138,11 +140,11 @@ export class MantProfesorComponent implements OnInit {
 
   editarModal(user: User){
     this.newUser = user;
-    this.modalType = "edit";
+    this.modal = modalType.edit;
     $('#modal').modal('show');
   }
 
-  public onValChange(status: string) {
+  public onValChange(status: boolean) {
     this.selectedButton = status;
     this.getUsers();
   }

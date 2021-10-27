@@ -10,9 +10,9 @@
         <br><br>
         <div class="form-group">
             <button type="button" class="btn btn-primary" (click)="agregarModal()">Agregar</button>
-            <mat-button-toggle-group style="float: right;" #group="matButtonToggleGroup" [value]="selectedButton" (change)="onValChange(group.value)" >
-              <mat-button-toggle value="active">Activos</mat-button-toggle>
-              <mat-button-toggle value="inactive">Inactivos</mat-button-toggle>
+            <mat-button-toggle-group style="float: right;" #group="matButtonToggleGroup" [(ngModel)]="selectedButton" (change)="onValChange(group.value)" >
+              <mat-button-toggle [value]="true">Activos</mat-button-toggle>
+              <mat-button-toggle [value]="false">Inactivos</mat-button-toggle>
             </mat-button-toggle-group>
         </div>        
 
@@ -26,7 +26,7 @@
                         {{ column }}
                     </th>
                     <th>
-                      <div *ngIf="selectedButton==='active'; then deactivate else activate">
+                      <div *ngIf="selectedButton===true; then deactivate else activate">
                       </div>        
                       <ng-template #deactivate>Desactivar</ng-template>        
                       <ng-template #activate>Activar</ng-template>
@@ -45,7 +45,7 @@
                         <td>{{ user.teacher.email }}</td>
                         <td>{{ user.teacher.address }}</td>
                         <td><fa-icon [icon]="faPen" (click)="editarModal(user)"></fa-icon></td>
-                        <div *ngIf="selectedButton==='active'; then eliminar else restaurar">
+                        <div *ngIf="selectedButton === true; then eliminar else restaurar">
                         </div>        
                         <ng-template #eliminar>
                           <td><fa-icon [icon]="faTimes" (click)="delete(user)"></fa-icon></td>
@@ -67,7 +67,7 @@
       <div class="modal-content">
       <div class="modal-header">
           
-        <div *ngIf="editModal; then editar else agregar">
+        <div *ngIf="modal === allModalTypes.edit; then editar else agregar">
         </div>        
         <ng-template #editar>
           <h5 class="modal-title">Editar usuario</h5>
@@ -87,7 +87,7 @@
                   [(ngModel)]="newUser.username"
                   required>
             </div>
-            <div *ngIf="modalType === 'create' || modalType === 'restore'" class="form-group">
+            <div *ngIf="modal === allModalTypes.create || modal === allModalTypes.restore" class="form-group">
               <span>Contraseña</span>
               <input type="text" class="form-control" placeholder="Contraseña" name="password"             
                   [(ngModel)]="newUser.password"
@@ -138,7 +138,7 @@
             </div>          
         </div>
           <div class="modal-footer">
-            <div *ngIf="modalType === 'edit'; then editUser else createUser">
+            <div *ngIf="modal === allModalTypes.edit; then editUser else createUser">
             </div>        
             <ng-template #editUser>
               <button type="submit" class="btn btn-primary" >Editar</button>

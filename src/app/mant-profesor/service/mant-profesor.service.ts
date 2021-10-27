@@ -13,9 +13,9 @@ export class MantProfesorService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(status: String): Observable<any>{
-    if (status === "inactive") return this.http.get<any>(this.url + "s/inactive");    
-    else return this.http.get<any>(this.url + 's');
+  getUsers(status: boolean): Observable<any>{
+    if (status) return this.http.get<any>(this.url + 's'); 
+    else return this.http.get<any>(this.url + "s/inactive");    
   }
   
   createUser(user: User): Observable<any>{
