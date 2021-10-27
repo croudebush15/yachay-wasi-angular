@@ -14,7 +14,7 @@ export class MantSalonService {
   constructor(private http: HttpClient) { }
 
   getClassrooms(): Observable<any>{
-    return this.http.get<any>(this.url + '/all');
+    return this.http.get<any>(this.url + '/active');
   }
 
   getTeachers(): Observable<any>{

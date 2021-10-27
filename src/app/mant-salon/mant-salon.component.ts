@@ -19,6 +19,13 @@ export class MantSalonComponent implements OnInit {
   faTimes = faTimes;
   faPen = faPen; 
 
+  /* enum CompassDirection {
+    North,
+    East,
+    South,
+    West,
+  }
+ */
   isLoading: boolean = false;
   isError: boolean = false;
   editModal: boolean = false;
@@ -54,13 +61,13 @@ export class MantSalonComponent implements OnInit {
     this.courseService.getCourses().subscribe(res => {
       this.courses = res;
     });
-
     this.service.getTeachers().subscribe(res => {
       this.teachers = res;
     });
   }
 
   submit(){
+    this.isError = false;
     switch(this.modalType){
       case "create":
         this.createClassroom();
@@ -74,35 +81,28 @@ export class MantSalonComponent implements OnInit {
   }
 
   createClassroom(){
-    if(this.selectedCourse === 0){
-      this.isError = true;
-      return;
-    } 
-    let selectedCourseObject = this.courses.find(course=>course.id == this.selectedCourse)
-    if (selectedCourseObject === undefined) {
-      this.isError = true;
-      return;
+    if(this.selectedCourse !== 0 || this.selectedTeacher !== 0){
+      let selectedCourseObject = this.courses.find(course=>course.id == this.selectedCourse);
+      let selectedTeacherObject = this.teachers.find(teacher=>teacher.idTeacher == this.selectedTeacher);
+      if (selectedCourseObject !== undefined || selectedTeacherObject !== undefined) {
+        this.newClassroom.course = selectedCourseObject || new Course();
+        this.newClassroom.teacher = selectedTeacherObject || new Teacher();
+        this.service.createClassrooms(this.newClassroom).subscribe(res => {
+          this.getClassrooms();
+          this.closeModal();  
+          return;    
+        },
+        error => {
+          if (error.status !== '200')
+            this.isError = true; 
+        });
+        this.newClassroom = new Classroom();
+      }     
     }
-    if(this.selectedTeacher === 0){
+    else{
       this.isError = true;
       return;
-    } 
-    let selectedTeacherObject = this.teachers.find(teacher=>teacher.idTeacher == this.selectedTeacher)
-    if (selectedTeacherObject === undefined) {
-      this.isError = true;
-      return;
-    }
-    this.newClassroom.course = selectedCourseObject || new Course();
-    this.newClassroom.teacher = selectedTeacherObject || new Teacher();
-    this.service.createClassrooms(this.newClassroom).subscribe(res => {
-      this.getClassrooms();
-      this.closeModal();      
-    },
-    error => {
-      if (error.status !== '200')
-        this.isError = true; 
-    });
-    this.newClassroom = new Classroom();
+    }                
   }
 
   editClassroom(){
