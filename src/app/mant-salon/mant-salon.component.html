@@ -6,20 +6,27 @@
         <h2>Mantenimiento de Salones</h2>
         <p class="sub-header">Aquí se puede listar, registrar, editar y eliminar salones.</p>
         </header>
-        <br><br>
+        <br><br>               
         <div class="form-group">
-            <button type="button" class="btn btn-primary"(click)="agregarModal()" >
-                Agregar
-            </button>
-        </div>
-        <br>        
-        
+          <button type="button" class="btn btn-primary" (click)="agregarModal()">Agregar</button>
+          <mat-button-toggle-group style="float: right;" #group="matButtonToggleGroup" [(ngModel)]="selectedButton" (change)="onValChange(group.value)" >
+            <mat-button-toggle [value]="true">Activos</mat-button-toggle>
+            <mat-button-toggle [value]="false">Inactivos</mat-button-toggle>
+          </mat-button-toggle-group>
+      </div>        
+      <br> 
         <h1 *ngIf=isLoading>Cargando...</h1>   
         <table *ngIf="!isLoading" class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
                   <th *ngFor = "let column of headers">
                     {{ column }}
+                  </th>
+                  <th>
+                    <div *ngIf="selectedButton===true; then deactivate else activate">
+                    </div>        
+                    <ng-template #deactivate>Desactivar</ng-template>        
+                    <ng-template #activate>Activar</ng-template>
                   </th>
                 </tr>
                 </thead>
@@ -32,7 +39,14 @@
                         <td>{{ classroom.horaI }}</td>
                         <td>{{ classroom.horaF }}</td>
                         <td><fa-icon [icon]="faPen" (click)="editarModal(classroom)"></fa-icon></td>
-                        <td><fa-icon [icon]="faTimes" (click)="deleteClassroom(classroom)"></fa-icon></td>                        
+                        <div *ngIf="selectedButton === true; then eliminar else restaurar">
+                        </div>        
+                        <ng-template #eliminar>
+                          <td><fa-icon [icon]="faTimes" (click)="deleteClassroom(classroom)"></fa-icon></td>
+                        </ng-template>        
+                        <ng-template #restaurar>
+                          <td><fa-icon [icon]="faTrashRestore" (click)="restore(classroom)"></fa-icon></td>
+                        </ng-template>                        
                     </tr>
                 </tbody>
         </table>     
@@ -48,7 +62,7 @@
       <div class="modal-content">
       <div class="modal-header">
           
-        <div *ngIf="editModal; then editar else agregar">
+        <div *ngIf="modal === allModalTypes.edit; then editar else agregar">
         </div>        
         <ng-template #editar>
           <h5 class="modal-title">Editar Salon</h5>
@@ -62,13 +76,7 @@
         <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
         <form ngNativeValidate (ngSubmit)=submit()>
           <div class="modal-body">          
-            <h3>Curso</h3>
-            <div class="form-group">
-              <span>NRC</span>
-              <input type="text" class="form-control" placeholder="Nombre" name="name"
-                  [(ngModel)]="newClassroom.name"
-                  required>
-            </div>
+            <h3>Curso</h3>            
             <div class="form-group">
               <span>Dia de Semana</span>
               <br>
@@ -107,12 +115,12 @@
                  
         </div>
           <div class="modal-footer">
-            <div *ngIf="modalType === 'edit'; then editUser else createUser">
+            <div *ngIf="modal === allModalTypes.edit; then editClassroom else createClassroom">
             </div>        
-            <ng-template #editUser>
+            <ng-template #editClassroom>
               <button type="submit" class="btn btn-primary" >Editar</button>
             </ng-template>        
-            <ng-template #createUser>
+            <ng-template #createClassroom>
               <button type="submit" class="btn btn-primary">Guardar</button>
             </ng-template>
             <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>            

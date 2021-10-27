@@ -33,4 +33,8 @@ export class MantSalonService {
   removeClassroom(classroom: Classroom): Observable<any>{
     return this.http.delete<any>(this.url + "/" + classroom.id, {observe: 'response'});
   }
+
+  restoreClassroom(classroom: Classroom): Observable<any>{
+    return this.http.post<any>(this.url + "/restore", classroom, {observe: 'response'});
+  }
 }

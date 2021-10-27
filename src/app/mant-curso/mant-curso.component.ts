@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { faPen, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faTimes, faTrashRestore } from '@fortawesome/free-solid-svg-icons';
 import { Course } from '../common/model/course';
+import { modalType } from '../common/model/modal';
 import { MantCursoService } from './service/mant-curso.service';
 declare var $:any; 
 
@@ -15,14 +16,17 @@ export class MantCursoComponent implements OnInit {
 
   faTimes = faTimes;
   faPen = faPen; 
+  faTrashRestore = faTrashRestore;
 
   isLoading: boolean = false;
   isError: boolean = false;
   editModal: boolean = false;
-  modalType: string = "create";
-  headers = ["Nombre", "Descripción","Editar","Eliminar"]; 
+  modal: modalType = modalType.create;
+  allModalTypes = modalType;
+  headers = ["Nombre", "Descripción","Editar"]; 
   courses: Course[] = [];
   newCourse: Course = new Course();
+  selectedButton: boolean = true;
 
   constructor(private service: MantCursoService) { }
 
@@ -35,7 +39,7 @@ export class MantCursoComponent implements OnInit {
   getCourses(){
     this.isLoading = true;
     setTimeout(() => {
-      this.service.getCourses().subscribe(res => {
+      this.service.getCourses(this.selectedButton).subscribe(res => {
         this.courses = res;
         this.isLoading = false;
       });
@@ -43,15 +47,18 @@ export class MantCursoComponent implements OnInit {
   }
 
   submit(){
-    switch(this.modalType){
-      case "create":
+    switch(this.modal){
+      case modalType.create:
         this.createCourse();
         break;
-      case "edit":
+      case modalType.edit:
         this.editCourse();
         break;
+      case modalType.restore:
+        this.retoreCourse();
+        break;
       default:
-        alert("Error: Tipo de formulario invalido.")
+        alert("Error: Tipo de formulario invalido.");
     }
   }
 
@@ -64,7 +71,7 @@ export class MantCursoComponent implements OnInit {
       if (error.status !== '200')
         this.isError = true; 
     });
-    this.newCourse = new Course();
+    this.clean();
   }
 
   editCourse(){
@@ -76,11 +83,11 @@ export class MantCursoComponent implements OnInit {
       if (error.status !== '200')
         this.isError = true; 
     });
-    this.newCourse = new Course();
+    this.clean();
   }
 
   deleteCourse(course: Course){
-    if(confirm("¿Eliminar curso " + course.name + "?")) {
+    if(confirm("¿Desactivar curso " + course.name + "?")) {
       this.service.removeCourse(course).subscribe(res => {
         if (res.status !== 200) alert("Curso no se ha eliminado correctamente.");       
       });
@@ -88,8 +95,23 @@ export class MantCursoComponent implements OnInit {
     }    
   }
 
+  retoreCourse(){
+    this.service.restoreCourse(this.newCourse).subscribe(res => {
+      if (res.status !== 200)
+        this.isError = true;       
+      else {
+        this.getCourses();
+        this.closeModal();
+      } 
+    },
+    error => {
+      this.isError = true;
+    });
+    this.clean();   
+  }
+
   agregarModal(){
-    this.modalType = "create";
+    this.modal = modalType.create;
     $('#modal').modal('show');
   }
 
@@ -98,10 +120,25 @@ export class MantCursoComponent implements OnInit {
     this.isError = false;
   }
 
+  restore(course: Course){
+    this.newCourse= course;
+    this.modal = modalType.restore;
+    $('#modal').modal('show');
+  }
+
   editarModal(course: Course){
     this.newCourse = course;
-    this.modalType = "edit";
+    this.modal = modalType.edit;
     $('#modal').modal('show');
+  }
+
+  clean(){
+    this.newCourse = new Course();
+  }
+
+  public onValChange(status: boolean) {
+    this.selectedButton = status;
+    this.getCourses();
   }
 
 }

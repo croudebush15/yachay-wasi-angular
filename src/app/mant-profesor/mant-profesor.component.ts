@@ -22,7 +22,6 @@ export class MantProfesorComponent implements OnInit {
 
   isLoading: boolean = false;
   isError: boolean = false;
-  //editModal: boolean = false;
   modal: modalType = modalType.create;
   allModalTypes = modalType;
   selectedButton: boolean = true;
@@ -76,8 +75,7 @@ export class MantProfesorComponent implements OnInit {
         this.closeModal();
       } 
     });
-    this.newUser = new User();
-    this.newUser.teacher = new Teacher();
+    this.clean();
   }
 
   editUser(){
@@ -92,8 +90,7 @@ export class MantProfesorComponent implements OnInit {
     error => {
       this.isError = true;
     });
-    this.newUser = new User();
-    this.newUser.teacher = new Teacher();
+    this.clean();
   }
 
   retoreUser(){
@@ -108,8 +105,7 @@ export class MantProfesorComponent implements OnInit {
     error => {
       this.isError = true;
     });
-    this.newUser = new User();
-    this.newUser.teacher = new Teacher();
+    this.clean();
   }
 
 
@@ -126,6 +122,11 @@ export class MantProfesorComponent implements OnInit {
     this.newUser = user;
     this.modal = modalType.restore;
     $('#modal').modal('show');
+  }
+
+  clean(){
+    this.newUser = new User();
+    this.newUser.teacher = new Teacher();
   }
 
   agregarModal(){

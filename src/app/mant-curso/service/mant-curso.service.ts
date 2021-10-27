@@ -13,8 +13,9 @@ export class MantCursoService {
 
   constructor(private http: HttpClient) { }
 
-  getCourses(): Observable<any>{
-    return this.http.get<any>(this.url);
+  getCourses(status: boolean): Observable<any>{
+    if (status) return this.http.get<any>(this.url + '/active'); 
+    else return this.http.get<any>(this.url + "/inactive");  
   }
   
   createCourse(course: Course): Observable<any>{    
@@ -27,5 +28,9 @@ export class MantCursoService {
 
   removeCourse(course: Course): Observable<any>{
     return this.http.delete<any>(this.url + "/" + course.id, {observe: 'response'});
+  }
+
+  restoreCourse(course: Course): Observable<any>{
+    return this.http.post<any>(this.url + "/restore", course, {observe: 'response'});
   }
 }

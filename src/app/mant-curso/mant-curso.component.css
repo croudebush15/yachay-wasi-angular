@@ -31,6 +31,7 @@ p.sub-header {
     margin-left: 15px;
 }
 
-#formulario-actualizar{
-    display: none;
+fa-icon{
+    justify-content: center;
+    display: flex;
 }
