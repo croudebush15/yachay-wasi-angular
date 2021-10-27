@@ -14,7 +14,7 @@
       </div>
 
     <main class="contenedor">
-        <div class="course-card" *ngFor="let classroom of classrooms">
+        <div class="course-card" *ngFor="let classroom of classrooms" id="redondo">
           <!--<div style="background-image: url(/assets/background.jpg); height: 120px;"></div>   -->
           <img *ngIf="classroom.course.id === 1" src ="/assets/background.jpg" style="height: 240px;" class="card-img-top" alt="Card image cap">
           <img *ngIf="classroom.course.id === 2" src ="/assets/quechua_2.jpg" style="height: 240px;" class="card-img-top" alt="Card image cap">
@@ -38,7 +38,7 @@
             height: 4rem;"/>
         </div>  -->
             <div class="card-body">
-              <h5 href="#" class="card-title">{{ classroom.course.name }} ({{ classroom.name }})</h5>
+              <a href="clase"><h5 class="card-title">{{ classroom.course.name }} ({{ classroom.name }})</h5></a>
               <span *ngIf="classroom.dayOfWeek === 'lun'">Día: Lunes </span>
               <span *ngIf="classroom.dayOfWeek === 'mie'">Día: Miércoles </span>
               <span *ngIf="classroom.dayOfWeek === 'vie'">Día: Viernes </span>

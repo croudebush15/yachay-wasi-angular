@@ -64,6 +64,7 @@ li{
 
 .p{
     display:inline;
-    margin-right: 6px;
+    margin-right: 20px;
     font-size: 20px;
-  }
+    color: #F2994B;
+}

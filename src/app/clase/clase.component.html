@@ -1,14 +1,11 @@
-<app-logo-perfil></app-logo-perfil>
+<app-perfil></app-perfil>
 <section class="pagina-principal">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <div class="input-group">
-                    <input type="search" class="form-control rounded" placeholder="Contenido" aria-label="Search"
-                      aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-outline-primary">Buscar</button>
-                </div>
 
+            <h1 *ngFor="let classroom of classrooms">{{ classroom.course.name }}</h1>
+
+            <div class="col-md-3">
                 <h3>Presentación</h3>
                 <ul>
                     <li class="nav-item">

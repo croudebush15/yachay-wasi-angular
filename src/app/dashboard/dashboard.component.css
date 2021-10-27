@@ -28,11 +28,14 @@ button{
     transition: all 0.4s ease-in-out;
     }
 
-.userpicture{
-    margin-right: 50%;
+
+.course-card{
+    box-shadow: 2px 2px 5px #999;
 }
-
-
+a{
+    text-decoration: none;
+    color: black;
+}
 
 /*
 .container-fluid{
