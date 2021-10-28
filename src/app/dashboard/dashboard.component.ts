@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Classroom } from '../common/model/classroom';
 import { DashboardService } from './service/dashboard.service';
 declare var $:any; 
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit {
 
   classrooms: Classroom[] = [];
 
-  constructor(private service: DashboardService) { }
+  constructor(private service: DashboardService,
+    private router: Router) { }
 
   ngOnInit(): void {
     window.scroll(0,0);
@@ -24,6 +26,10 @@ export class DashboardComponent implements OnInit {
       this.classrooms = res;
       console.log(res);              
     })
+  }
+
+  irClase(classroom: Classroom){
+    this.router.navigate(['clase']); 
   }
 
 }

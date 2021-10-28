@@ -14,7 +14,7 @@
       </div>
 
     <main class="contenedor">
-        <div class="course-card" *ngFor="let classroom of classrooms" id="redondo">
+        <div class="course-card" *ngFor="let classroom of classrooms" id="redondo" (click)="irClase(classroom)">
           <!--<div style="background-image: url(/assets/background.jpg); height: 120px;"></div>   -->
           <img *ngIf="classroom.course.id === 1" src ="/assets/background.jpg" style="height: 240px;" class="card-img-top" alt="Card image cap">
           <img *ngIf="classroom.course.id === 2" src ="/assets/quechua_2.jpg" style="height: 240px;" class="card-img-top" alt="Card image cap">
