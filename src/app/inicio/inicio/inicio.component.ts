@@ -37,6 +37,9 @@ export class InicioComponent implements OnInit {
             } else {
                 this.loginError = true;
             }
+        },
+        error => {
+          this.loginError = true;
         });
     }
 
