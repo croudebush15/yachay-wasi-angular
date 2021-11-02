@@ -23,8 +23,7 @@ export class DashboardComponent implements OnInit {
 
   getClassrooms(){
     this.service.getClassroom().subscribe(res => {
-      this.classrooms = res;
-      console.log(res);              
+      this.classrooms = res;            
     })
   }
 

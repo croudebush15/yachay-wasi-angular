@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { InicioService } from '../service/inicio-service.service';
 
 @Component({
@@ -33,7 +31,7 @@ export class InicioComponent implements OnInit {
                 sessionStorage.setItem('role', user.role);
                 if (user.role === "ADMIN") this.router.navigate(['admin']); 
                 else this.router.navigate(['dashboard']); 
-                console.log("Token:" + sessionStorage.getItem("token"));              
+                //console.log("Token:" + sessionStorage.getItem("token"));              
             } else {
                 this.loginError = true;
             }
