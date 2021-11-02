@@ -24,6 +24,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
+import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MantSalonComponent } from './mant-salon/mant-salon.component';
     DashboardComponent,
     PageComponent,
     MantCursoComponent,
-    MantSalonComponent
+    MantSalonComponent,
+    MantAlumnoComponent
   ],
   imports: [
     BrowserModule,

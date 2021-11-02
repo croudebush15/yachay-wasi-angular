@@ -1,0 +1,141 @@
+<app-perfil></app-perfil>
+
+<section id="vantage" class="description main-section">
+    <div class="container">
+        <header>
+        <br><br><br>
+        <h2>Mantenimiento de Alumnos</h2>
+        <p class="sub-header">Aquí se puede listar, registrar, editar y eliminar alumnos.</p>
+        </header>
+        <br><br>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="agregarModal()">Agregar</button>
+          <mat-button-toggle-group style="float: right;" #group="matButtonToggleGroup" [(ngModel)]="selectedButton" (change)="onValChange(group.value)" >
+            <mat-button-toggle [value]="true">Activos</mat-button-toggle>
+            <mat-button-toggle [value]="false">Inactivos</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>         
+        <br>
+        <h1 *ngIf=isLoading>Cargando...</h1>   
+        <table *ngIf="!isLoading" class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                  <th *ngFor = "let column of headers">
+                    {{ column }}
+                  </th>
+                  <th>
+                    <div *ngIf="selectedButton===true; then deactivate else activate">
+                    </div>        
+                    <ng-template #deactivate>Desactivar</ng-template>        
+                    <ng-template #activate>Activar</ng-template>
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor = "let student of students">
+                        <td>{{ student.firstName }}</td>
+                        <td>{{ student.lastName }}</td>
+                        <td>{{ student.document_number }}</td>
+                        <td>{{ student.birthDate }}</td>
+                        <td>{{ student.phone }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.address }}</td>
+                        <td><fa-icon [icon]="faPen" (click)="editarModal(student)"></fa-icon></td>
+                        <div *ngIf="selectedButton === true; then eliminar else restaurar">
+                        </div>        
+                        <ng-template #eliminar>
+                          <td><fa-icon [icon]="faTimes" (click)="deleteStudent(student)"></fa-icon></td>
+                        </ng-template>        
+                        <ng-template #restaurar>
+                          <td><fa-icon [icon]="faTrashRestore" (click)="restoreModal(student)"></fa-icon></td>
+                        </ng-template>                             
+                    </tr>
+                </tbody>
+        </table>     
+        <br><br><br>
+    </div>
+</section>
+
+
+
+  <!-- Modal -->
+  <div id="modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">
+          
+        <div *ngIf="modal === allModalTypes.edit; then editar else agregar">
+        </div>        
+        <ng-template #editar>
+          <h5 class="modal-title">Editar alumno</h5>
+        </ng-template>        
+        <ng-template #agregar>
+          <h5 class="modal-title">Agregar nuevo alumno</h5>
+        </ng-template>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+          <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
+        </div>
+        <form ngNativeValidate (ngSubmit)=submit()>
+          <div class="modal-body">          
+            <h3>Alumno</h3>
+            <div class="form-group">
+              <span>Nombres</span>
+              <input type="text" class="form-control" placeholder="Nombres" name="firstName"             
+                  [(ngModel)]="newStudent.firstName"
+                  required>
+            </div>
+            <div class="form-group">
+              <span>Apellidos</span>
+              <input type="text" class="form-control" placeholder="Apellidos" name="lastName"
+                  [(ngModel)]="newStudent.lastName"
+                  required>
+            </div>
+            <div class="form-group">
+              <span>Número Documento</span>
+              <input type="text" class="form-control" placeholder="Número Documento" name="document_number"
+                  [(ngModel)]="newStudent.document_number"
+                  required>
+            </div>
+            <div class="form-group">
+              <span>Fecha de Nacimiento</span>
+              <input type="date" class="form-control" placeholder="Fecha de Nacimiento" name="birthDate"
+                  [(ngModel)]="newStudent.birthDate"
+                  required>
+            </div>
+            <div class="form-group">
+              <span>Teléfono</span>
+              <input type="text" class="form-control" placeholder="Teléfono" name="phone"
+                  [(ngModel)]="newStudent.phone"
+                  required>
+            </div>
+            <div class="form-group">
+              <span>Correo</span>
+              <input type="email" class="form-control" placeholder="Correo" name="email"
+                  [(ngModel)]="newStudent.email"
+                  required>
+            </div>  
+            <div class="form-group">
+              <span>Dirección</span>
+              <input type="address" class="form-control" placeholder="Dirección" name="address"
+                  [(ngModel)]="newStudent.address"
+                  required>
+            </div>          
+        </div>
+          <div class="modal-footer">
+            <div *ngIf="modal === allModalTypes.edit; then editStudent else createStudent">
+            </div>        
+            <ng-template #editStudent>
+              <button type="submit" class="btn btn-primary" >Editar</button>
+            </ng-template>        
+            <ng-template #createStudent>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </ng-template>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>            
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>

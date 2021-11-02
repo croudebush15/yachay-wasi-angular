@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ClaseComponent } from './clase/clase.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
+import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantProfesorComponent } from './mant-profesor/mant-profesor.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
@@ -22,8 +23,9 @@ const routes: Routes = [
   { path: 'profesores', component: MantProfesorComponent, canActivate:[AdminGuard] },
   { path: 'cursos', component: MantCursoComponent, canActivate:[AdminGuard] },
   { path: 'salones', component: MantSalonComponent, canActivate:[AdminGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
-  { path: 'admin', component: MantProfesorComponent, canActivate:[AdminGuard] }
+  { path: 'alumnos', component: MantAlumnoComponent, canActivate:[AdminGuard] },
+  { path: 'admin', component: MantProfesorComponent, canActivate:[AdminGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] }
 ];
 
 @NgModule({
