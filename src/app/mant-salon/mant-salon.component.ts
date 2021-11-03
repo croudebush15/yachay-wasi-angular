@@ -65,7 +65,7 @@ export class MantSalonComponent implements OnInit {
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.selectableStudents.slice())
+        map(name => name ? this._filter(name) : this.allStudents.slice())
       );
   }
 
@@ -76,7 +76,7 @@ export class MantSalonComponent implements OnInit {
   private _filter(name: string): Student[] {
     //this.selectableStudents = this.allStudents.filter(student => !this.studentsInClassroom.includes(student)); 
     const filterValue = name.toLowerCase();
-    return this.selectableStudents.filter(student => student.fullName.toLowerCase().includes(filterValue));
+    return this.allStudents.filter(student => student.fullName.toLowerCase().includes(filterValue));
   }
 
   getData(){
