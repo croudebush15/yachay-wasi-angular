@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 export class MantSalonService {
 
   private url = `${environment.baseApiUrl}/classroom`;
+  private studentsUrl = `${environment.baseApiUrl}/student/classroom`;
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,10 @@ export class MantSalonService {
 
   getTeachers(): Observable<any>{
     return this.http.get<any>(this.url  + '/teacher');
+  }
+
+  getStudentsInClassroom(classroom: Classroom): Observable<any>{    
+    return this.http.post<any>(this.studentsUrl, classroom, {observe: 'response'});
   }
   
   createClassrooms(classroom: Classroom): Observable<any>{    

@@ -22,6 +22,9 @@ import { MantProfesorService } from './mant-profesor/service/mant-profesor.servi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import {MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatInputModule } from '@angular/material/input';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
 import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
@@ -53,7 +56,10 @@ import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MatButtonToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
   providers: [
     InicioService,

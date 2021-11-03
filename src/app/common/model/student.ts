@@ -1,7 +1,8 @@
 export class Student {
     id!: number;
     firstName!: string;
-    lastName!: string;
+    lastName!: string;    
+    fullName!: string;
     document_number!: string;
     birthDate!: Date;
     phone!: string;

@@ -27,5 +27,9 @@ h3
     text-transform: uppercase;
 }
 
+
+
+/* Mat Autocomplete on Modal Fixes */ .cdk-overlay-container {z-index: 999999 !important;}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

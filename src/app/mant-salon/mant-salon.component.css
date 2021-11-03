@@ -8,6 +8,10 @@ h2{
     text-align: center;
 }
 
+.modal-dialog-2{
+    max-width: 650px;
+}
+
 .main-section header {
     text-align: center;
 }
