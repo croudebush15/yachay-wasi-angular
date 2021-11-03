@@ -1,6 +1,6 @@
 
 #navbar1{
-    background-color: black;
+    background-color: #5115a0;
     padding:2em;
 }
 
@@ -26,20 +26,20 @@ img{
     border-style: none;
 }
 
-#snap-pm-user-profile{
-    color:white;
-    padding-top: 2px;
-}
-
-.h1{
-    font-size: 2.5rem;
-    line-height: 1.2;
-}
-
 a{
     color: white;
     text-decoration: none;
     background-color: transparent;
+}
+
+.h1{
+    font-size: 3em;
+}
+
+.h1:hover{
+    color: orange;
+    border-bottom: orange 3px solid; 
+    transition: all .35s ease;
 }
 
 #cancel{
@@ -59,12 +59,31 @@ a{
 }
 
 li{
-    text-decoration-color: white;
+    text-decoration-color: #fff;;
 }
 
 .p{
     display:inline;
     margin-right: 20px;
-    font-size: 20px;
-    color: #F2994B;
+    font-size: 16px;
+    color: #fff;
 }
+
+.p:hover{
+    color: orange
+}
+
+hr{
+    margin: 0;
+}
+
+
+.graph-1{
+    width: 1000px;
+    height: 500px;
+    max-width: 100%;
+    position:absolute;
+    left: 30%;
+    top: 0;
+}
+

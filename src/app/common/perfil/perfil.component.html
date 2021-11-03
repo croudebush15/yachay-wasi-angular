@@ -3,24 +3,30 @@
         <a class="h1" aria-level="1" id="snap-pm-user-profile" href="dashboard">
             <!-- <img src="/assets/profile.png" width="100" height="100" class="userpicture" alt=""> -->
             {{ teacher.firstName }}
-            <hr>
+        </a>
+            <br>
+            <br>
             <div id="menu">
+                <li style="display: inline; padding-left:3px;
+                padding-right:3px;">
                 <a class="p" href="dashboard">Inicio</a>
-                <a class="p" href="dashboard">Perfil</a>
-                <a class="p" href="inicio">Salir</a>
-                <div *ngIf = "teacher.role === 'ADMIN'">
+                <a class="p" href="dashboard">Perfil</a>         
+                </li>
+                <li style="display: inline; padding-left:3px;
+                padding-right:3px;" *ngIf = "teacher.role === 'ADMIN'" >   
                     <a class="p" href="profesores">Profesor</a>
+                    <a class="p" href="alumnos">Alumnos</a>
                     <a class="p" href="cursos">Curso</a>
                     <a class="p" href="salones">Salon</a>
-                    <a class="p" href="alumnos">Alumno</a>
-                </div>                
+                </li>               
             </div>           
-        </a>
+       
         
     </div>
+    <img class="graph-1" src="https://www.historiasparaarmar.org/assets/img/graph-22.png">
     <div class="pull-right">
         <a href="inicio">
-            <img id="cancel" src="/assets/cancel.png" width="50" height="50" alt="">
+            <img id="cancel" src="https://www.historiasparaarmar.org/assets/img/icon-chevron-right.svg" width="50" height="50" alt="">
         </a>
     </div>
 </nav>

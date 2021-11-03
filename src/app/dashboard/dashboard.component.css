@@ -1,5 +1,5 @@
 .dropdown{
-    padding-top: 100px;
+ /* padding-top: 100px;*/
     padding-right: 5rem;
     text-align: right;
 }
@@ -11,7 +11,7 @@ button{
 
 
 #cursos{
-    background-color: #f8f9fa;
+    background-image: url("https://www.historiasparaarmar.org/bg-family.99b4c0beb762cacf1631.jpg");
 }
 
 .contenedor {
@@ -26,12 +26,19 @@ button{
     color: #000;
     margin: 4px;
     transition: all 0.4s ease-in-out;
+    border-radius: 6px;
+    cursor: default;
+    transition: all 400ms ease;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
     }
 
 
-.course-card{
-    box-shadow: 2px 2px 5px #999;
-}
+
+.course-card:hover{
+    box-shadow: 5px 10px 30px rgb(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}    
+
 a{
     text-decoration: none;
     color: black;

@@ -21,3 +21,18 @@ header ul li{
 header ul li a{
     padding: 6px 15 px;
 }
+
+.graph-2{
+    position: absolute;
+    left: 30%;
+    top: 0;
+    height: 70px;
+}
+
+
+.graph-3{
+    position: absolute;
+    left: 0%;
+    top: 2;
+    height: 90px;
+}

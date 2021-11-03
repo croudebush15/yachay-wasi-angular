@@ -4,24 +4,24 @@
 }
 
 #primero{
-    background-color: #81308C;
-    padding-top: 20px;
+    background-color: #5115a0;
+    padding-top: 3rem;
     padding-right: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 3rem;
     padding-left: 0px;
     text-align: center;
 }
 
 #tercero{
-    padding-top: 20px;
+    padding-top: 2rem;
     padding-right: 0px;
-    padding-bottom: 20px;
+    padding-bottom: 2rem;
     padding-left: 0px;
     text-align: center;
 }
 
 .bottom-foot{
-    background-color:#731F5C;
+    background-color:#411180;
 }
 
 .container {
@@ -70,7 +70,6 @@
     text-align: center!important;
 }
 
-
 .col-12{
     max-width: 100%;
     position: relative;
@@ -114,7 +113,103 @@
     font-weight: 500;
 }
 
-
 img{
     max-width: 100%;
+}
+
+.sup-top-foot{
+    background-color:#7444b3; 
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.container2{
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row2{
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+h2{
+    font-size: 25px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 30px;
+    font-weight: 500;
+    margin-top: 0
+}
+
+.suscribe-form{
+    position:relative;
+}
+
+form{
+    display: block;
+    margin-top: 0em;
+}
+
+.field{
+    border: 2px solid #5115a0;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-right: 16px;
+    height: 48px;
+    padding: 10px;
+    width: 240px;
+}
+
+input{
+    overflow: visible;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button{
+    text-transform: none;
+    overflow: visible;
+    margin: 0;
+}
+
+.btn{
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 700;
+    display: inline-flex;
+    width: auto;
+    align-items: center;
+    height: 48px;
+}
+
+.btn-primary{
+    text-align: center;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #ff8028;
+    border-color: #ff8028;
+}
+
+.chevron{
+    margin-left: 0;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;   
+}
+
+img{
+    border-style: none;
 }
