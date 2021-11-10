@@ -32,7 +32,7 @@ export class MantSalonComponent implements OnInit {
   editModal: boolean = false;
   modal: modalType = modalType.create;
   allModalTypes = modalType;
-  headers = ["NRC","Día de Semana","Nombre Curso","Nombre Profesor","Hora Inicio","Hora Fin","Editar"];
+  headers = ["NRC","Día de Semana","Nombre Curso","Nombre Profesor","Hora Inicio", "Horas","Editar"];
   studentHeaders = ["Nombre", "Apellido", "Número Documento", "Fecha de Nacimiento", "Teléfono", "Correo", "Dirección"]; 
   scheduleInicio = ["7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00"];
   schedulFin = ["8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];

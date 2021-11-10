@@ -47,7 +47,7 @@
                         <td>{{ classroom.course.name }}</td>
                         <td>{{ classroom.teacher.firstName}} {{ classroom.teacher.lastName }}</td>
                         <td>{{ classroom.horaI }}</td>
-                        <td>{{ classroom.horaF }}</td>
+                        <td>{{ classroom.durationHours }}</td>
                         <td><fa-icon [icon]="faPen" (click)="editarModal(classroom)"></fa-icon></td>
                         <div *ngIf="selectedButton === true; then active else inactive">
                         </div>        
@@ -71,75 +71,78 @@
   <div id="modal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
-      <div class="modal-header">
-          
-        <div *ngIf="modal === allModalTypes.edit; then editar else agregar">
-        </div>        
-        <ng-template #editar>
-          <h5 class="modal-title">Editar Salon</h5>
-        </ng-template>        
-        <ng-template #agregar>
-          <h5 class="modal-title">Agregar nuevo salon</h5>
-        </ng-template>
+        <div class="modal-header">          
+          <div *ngIf="modal === allModalTypes.edit; then editar else agregar">
+          </div>        
+          <ng-template #editar>
+            <h5 class="modal-title">Editar Salon</h5>
+          </ng-template>        
+          <ng-template #agregar>
+            <h5 class="modal-title">Agregar nuevo salon</h5>
+          </ng-template>
           <button type="button" class="btn-close" (click)="closeModal()"></button>
           <br>                    
         </div>
         <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
-        <form ngNativeValidate (ngSubmit)=submit()>
-          <div class="modal-body">          
-            <h3>Curso</h3>            
-            <div class="form-group">
-              <span>Dia de Semana</span>
-              <br>
-              <select matNativeControl required [(ngModel)]="newClassroom.dayOfWeek" name="dayOfWeek">
-                <option *ngFor="let day of daysOfWeek" [value]="day">{{ day }}</option>
-              </select>
-            </div>       
-            <div class="form-group">
-              <span>Curso</span>
-              <br>
-              <select matNativeControl required [(ngModel)]="selectedCourse" name="course">
-                <option *ngFor="let course of courses" [value]="course.id">{{ course.name }}</option>
-              </select>
-            </div>  
-            <div class="form-group">
-              <span>Profesor</span>
-              <br>
-              <select matNativeControl required [(ngModel)]="selectedTeacher" name="teacher">
-                <option *ngFor="let teacher of teachers" [value]="teacher.idTeacher">{{ teacher.firstName }} {{ teacher.lastName }}</option>
-              </select>
-            </div> 
-            <div class="form-group">
-              <span>Hora Inicio</span>
-              <br>
-              <select matNativeControl required [(ngModel)]="newClassroom.horaI" name="horaI">
-                <option *ngFor="let hourI of scheduleInicio" [value]="hourI">{{ hourI }}</option>
-              </select>
-            </div>   
-            <div class="form-group">
-              <span>Hora Fin</span>
-              <br>
-              <select matNativeControl required  [(ngModel)]="newClassroom.horaF" name="horaF">
-                <option *ngFor="let hourF of schedulFin" [value]="hourF" >{{ hourF }}</option>
-              </select>
-            </div>    
-                 
+        <div class="modal-body">
+          <h3>Curso</h3>
+          <mat-form-field>
+            <mat-label>Día de Semana</mat-label>
+            <mat-select matNativeControl required [(ngModel)]="newClassroom.dayOfWeek" name="dayOfWeek">
+              <mat-option *ngFor="let day of daysOfWeek" [value]="day">
+                {{day}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Curso</mat-label>
+            <mat-select matNativeControl required [(ngModel)]="selectedCourse" name="course">
+              <mat-option *ngFor="let course of courses" [value]="course.id">
+                {{ course.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Profesor</mat-label>
+            <mat-select matNativeControl required [(ngModel)]="selectedTeacher" name="teacher">
+              <mat-option *ngFor="let teacher of teachers" [value]="teacher.idTeacher">
+                {{ teacher.firstName }} {{teacher.lastName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Hora Inicio</mat-label>
+            <mat-select matNativeControl required [(ngModel)]="newClassroom.horaI" name="horaI">
+              <mat-option *ngFor="let hourI of scheduleInicio" [value]="hourI">
+                {{ hourI }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Duración Horas</mat-label>
+            <input matInput placeholder="Cantidad Horas" type="number" required [(ngModel)]="newClassroom.durationHours" name="durationHours">
+          </mat-form-field>
+
         </div>
-          <div class="modal-footer">
-            <div *ngIf="modal === allModalTypes.edit; then editClassroom else createClassroom">
-            </div>        
-            <ng-template #editClassroom>
-              <button type="submit" class="btn btn-primary" >Editar</button>
-            </ng-template>        
-            <ng-template #createClassroom>
-              <button type="submit" class="btn btn-primary">Guardar</button>
-            </ng-template>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>            
-          </div>
-      </form>
-      </div>
+        <div class="modal-footer">
+          <div *ngIf="modal === allModalTypes.edit; then editClassroom else createClassroom">
+          </div>        
+          <ng-template #editClassroom>
+            <button type="submit" class="btn btn-primary"(click)="submit()">Editar</button>
+          </ng-template>        
+          <ng-template #createClassroom>
+            <button type="submit" class="btn btn-primary" (click)="submit()">Guardar</button>
+          </ng-template>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>            
+        </div>
+      </div>       
     </div>
   </div>
+
 
   <!-- Modal Students -->
   <div id="modal-students" class="modal fade">

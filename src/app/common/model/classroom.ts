@@ -7,7 +7,7 @@ export class Classroom {
     numberOfStudents!: number;
     dayOfWeek!: string;
     course!: Course;
-    horaF!: string;
     horaI!: string;
+    durationHours!: number;
     teacher!: Teacher;
 }
