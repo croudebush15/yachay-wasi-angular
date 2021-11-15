@@ -29,6 +29,7 @@ export class MantSalonComponent implements OnInit {
 
   isLoading: boolean = false;
   isError: boolean = false;
+  errorMessage: string = "";
   editModal: boolean = false;
   modal: modalType = modalType.create;
   allModalTypes = modalType;
@@ -59,6 +60,7 @@ export class MantSalonComponent implements OnInit {
     this.isLoading = true;
     window.scroll(0,0);
     this.getData(); 
+    this.errorMessage = "Error: Ingreso Inválido";
     
     
     this.filteredOptions = this.myControl.valueChanges
@@ -130,14 +132,18 @@ export class MantSalonComponent implements OnInit {
           this.closeModal();  
           return;    
         },
-        error => {
-          if (error.status !== '200')
+        err => {      
+          if (err.status !== 200){
+            if(err.status === 400) this.errorMessage = "Error: Profesor ya tiene clase ese día a esa hora.";
             this.isError = true; 
+          }
+            
         });
         this.clean();
       }     
     }
     else{
+      this.errorMessage = "Error: Ingreso Inválido";
       this.isError = true;
       return;
     }                
@@ -155,14 +161,17 @@ export class MantSalonComponent implements OnInit {
           this.closeModal();  
           return;    
         },
-        error => {
-          if (error.status !== '200')
+        err => {        
+          if (err.status !== 200){
+            if(err.status === 400) this.errorMessage = "Error: Profesor ya tiene clase ese día a esa hora.";
             this.isError = true; 
+          }          
         });
         this.clean();
       }     
     }
     else{
+      this.errorMessage = "Error: Ingreso Inválido";
       this.isError = true;
       return;
     }       
@@ -180,14 +189,17 @@ export class MantSalonComponent implements OnInit {
 
   retoreClassroom(){
     this.service.restoreClassroom(this.newClassroom).subscribe(res => {
-      if (res.status !== 200)
+      if (res.status !== 200){
+        this.errorMessage = "Error: Ingreso Inválido";
         this.isError = true;       
+      }        
       else {
         this.getData();
         this.closeModal();
       } 
     },
     error => {
+      this.errorMessage = "Error: Ingreso Inválido";
       this.isError = true;
     });
     this.clean();   
@@ -248,7 +260,10 @@ export class MantSalonComponent implements OnInit {
     if(this.studentsInClassroom.find(s => s.id === student.id) === undefined){
       this.studentsInClassroom.push(student);
     }
-    else this.isError = true;
+    else{
+      this.errorMessage = "Error: Ingreso Inválido";
+      this.isError = true;
+    } 
   }
 
   removeStudentClassroom(student: Student){ 

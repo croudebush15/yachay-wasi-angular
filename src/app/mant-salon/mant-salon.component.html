@@ -83,7 +83,7 @@
           <button type="button" class="btn-close" (click)="closeModal()"></button>
           <br>                    
         </div>
-        <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>Error: Ingreso Inválido.</strong></p>
+        <p *ngIf="isError" class="text-danger" style="text-align: center;"><strong>{{ errorMessage }}</strong></p>
         <div class="modal-body">
           <h3>Curso</h3>
           <mat-form-field>
