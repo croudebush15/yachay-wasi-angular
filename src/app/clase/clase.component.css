@@ -1,4 +1,4 @@
-.pagina-principal{
+/*.pagina-principal{
     padding-top: 50px;
 }
 .nav-link{
@@ -64,4 +64,91 @@ h1{
 li{
     list-style: none;
     text-align: left;
+}
+
+.clase{
+    background-image: url("https://www.historiasparaarmar.org/bg-family.99b4c0beb762cacf1631.jpg");
+}
+
+#card-body {
+    background-color: #fff;
+    color: #000;
+    margin: 4px;
+    transition: all 0.4s ease-in-out;
+    border-radius: 6px;
+    cursor: default;
+    transition: all 400ms ease;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
+    }
+
+
+
+#card-body:hover{
+    box-shadow: 5px 10px 30px rgb(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}    
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+#espacio{
+    padding-bottom: 20px;
+}
+
+h1{
+    padding-top: 30px;
+}
+.contenedor {
+    display: grid;
+    padding: 5rem;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+h5{
+    padding-top: 20px;
+} */
+
+
+#cursos{
+    background-image: url("https://www.historiasparaarmar.org/bg-family.99b4c0beb762cacf1631.jpg");
+}
+
+.contenedor {
+    display: grid;
+    padding: 5rem;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+.course-card {
+    background-color: #fff;
+    color: #000;
+    margin: 4px;
+    transition: all 0.4s ease-in-out;
+    border-radius: 6px;
+    cursor: default;
+    transition: all 400ms ease;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
+    }
+
+
+
+.course-card:hover{
+    box-shadow: 5px 10px 30px rgb(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}    
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+h2{
+    color: #292929;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    text-align: center;
 }

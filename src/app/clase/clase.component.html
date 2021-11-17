@@ -1,89 +1,67 @@
 <app-perfil></app-perfil>
-<section class="pagina-principal">
-    <div class="container">
-        <div class="row">
 
-            <h1 *ngFor="let classroom of classrooms">{{ classroom.course.name }}</h1>
+<div id="cursos">
+    <main class="contenedor">
+        <a href="lista">
+        <div class="course-card" id="redondo">
+            <img src ="assets/alumnos.png" style="height: 300px;" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+                <a><h2 class="card-title">Alumnos</h2></a>
+            </div> 
+        </div>
+        </a>
+        <a href="asistencia">
+        <div class="course-card" id="redondo">
+            <img src ="assets/folder.png" style="height: 300px;" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+                <a><h2 class="card-title">Asistencia</h2></a>
+            </div> 
+        </div>
+        </a>
+        <a href="reporte">
+        <div class="course-card" id="redondo">
+            <img src ="assets/notas.png" style="height: 300px;" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+                <a><h2 class="card-title">Reportes</h2></a>
+            </div> 
+        </div>
+        </a>
+    </main>
+</div>
 
-            <div class="col-md-3">
-                <h3>Presentación</h3>
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema1">Tema 01</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema2">Tema 02</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema3">Tema 03</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema4">Tema 04</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema5">Tema 05</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tema6">Tema 06</a>
-                    </li>
-                </ul>
+ <!-- <section class="clase">
+    <div class="contenedor">
+        <div class="row"> 
+
+            <div class="col-md-4" id="espacio">
+                <div class="card-body" id="card-body">
+                    <img src="assets/alumnos.png" alt="" width="400" height="250">
+                    <a href="lista"><h5 class="card-title">Alumnos</h5></a>
+                    <br>
+                    <span>Cantidad de alumnos</span>
+                    <span> 80</span>
+                </div>
             </div>
-
-            <div class="col-md-9"  id="padding"> 
-                <h3>Lista de alumnos</h3>  
-                <table class="table table-striped table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Cod</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>12345678</td>
-                                <td>José</td>
-                                <td>Zavala Rodriguez</td>
-                            </tr>
-                            <tr>
-                                <td>24567890</td>
-                                <td>Fernando</td>
-                                <td>Rodriguez</td>
-                            </tr>
-                            <tr>
-                                <td>79989089</td>
-                                <td>José</td>
-                                <td>Zamalloa</td>
-                            </tr>
-                            <tr>
-                                <td>67564534</td>
-                                <td>Ana</td>
-                                <td>Rodriguez</td>
-                            </tr>
-                            <tr>
-                                <td>12345678</td>
-                                <td>José</td>
-                                <td>Zavala Rodriguez</td>
-                            </tr>
-                            <tr>
-                                <td>24567890</td>
-                                <td>Fernando</td>
-                                <td>Rodriguez</td>
-                            </tr>
-                            <tr>
-                                <td>79989089</td>
-                                <td>José</td>
-                                <td>Zamalloa</td>
-                            </tr>
-                            <tr>
-                                <td>67564534</td>
-                                <td>Ana</td>
-                                <td>Rodriguez</td>
-                            </tr>
-                        </tbody>
-                </table>
+            <div class="col-md-4" id="espacio">
+                <div class="card-body" id="card-body">
+                    <img src="assets/folder.png" alt="" width="400" height="250">
+                    <a href="archivos"><h5 class="card-title">Asistencia
+                    </h5></a>
+                    <br>
+                    <span>Cantidad de alumnos</span>
+                    <span> 80</span>
+                </div>
+            </div>
+            <div class="col-md-4" id="espacio">
+                <div class="card-body" id="card-body">
+                    <img src="assets/notas.png" alt="" width="400" height="250">
+                    <a href="notas"><h5 class="card-title">Reportes</h5></a>
+                    <br>
+                    <span>Cantidad de alumnos</span>
+                    <span> 80</span>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <app-footer></app-footer>

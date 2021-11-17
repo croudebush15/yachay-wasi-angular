@@ -28,6 +28,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
 import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
+import { ListaComponent } from './clases/lista/lista.component';
+import { AsistenciaComponent } from './clases/asistencia/asistencia.component';
+import { ReporteComponent } from './clases/reporte/reporte.component';
+import { AsistenciaAlumnosComponent } from './clases/asistencia-alumnos/asistencia-alumnos.component';
+import { PerfilProfesorComponent } from './perfil-profesor/perfil-profesor.component';
 
 
 @NgModule({
@@ -45,7 +50,12 @@ import { MantAlumnoComponent } from './mant-alumno/mant-alumno.component';
     PageComponent,
     MantCursoComponent,
     MantSalonComponent,
-    MantAlumnoComponent
+    MantAlumnoComponent,
+    ListaComponent,
+    AsistenciaComponent,
+    ReporteComponent,
+    AsistenciaAlumnosComponent,
+    PerfilProfesorComponent
   ],
   imports: [
     BrowserModule,

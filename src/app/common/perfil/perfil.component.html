@@ -8,25 +8,27 @@
             <br>
             <div id="menu">
                 <li style="display: inline; padding-left:3px;
-                padding-right:3px;">
-                <a class="p" href="dashboard">Inicio</a>
-                <a class="p" href="dashboard">Perfil</a>         
+                padding-right:3px;" *ngIf = "teacher.role === 'USER'" >
+                <a class="p" href="perfil-profesor">Perfil</a>         
+                <a class="p" href="dashboard">Cursos</a>
                 </li>
                 <li style="display: inline; padding-left:3px;
                 padding-right:3px;" *ngIf = "teacher.role === 'ADMIN'" >   
-                    <a class="p" href="profesores">Profesor</a>
-                    <a class="p" href="alumnos">Alumnos</a>
-                    <a class="p" href="cursos">Curso</a>
-                    <a class="p" href="salones">Salon</a>
+                    <a class="p" href="profesores">Gest. Profesores</a>
+                    <a class="p" href="alumnos">Gest. Alumnos</a>
+                    <a class="p" href="cursos">Gest. Cursos</a>
+                    <a class="p" href="salones">Gest. Salon</a>
                 </li>               
             </div>           
        
         
     </div>
     <img class="graph-1" src="https://www.historiasparaarmar.org/assets/img/graph-22.png">
+    <a class="referencia" href="inicio" >
     <div class="pull-right">
-        <a href="inicio">
+        <a>
             <img id="cancel" src="https://www.historiasparaarmar.org/assets/img/icon-chevron-right.svg" width="50" height="50" alt="">
         </a>
     </div>
+    </a>
 </nav>

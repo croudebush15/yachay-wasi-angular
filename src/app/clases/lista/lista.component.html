@@ -1,0 +1,33 @@
+<app-perfil></app-perfil>
+<br><br><br>
+<section id="vantage" class="description main-section">
+    <div class="container">
+      <header>
+        <h2>Lista de Alumnos</h2>
+        <p class="sub-header">Aquí puedes encontrar la lista de alumnos que pertenecen a esta clase.</p>
+        <br><br>
+      </header>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th *ngFor = "let column of headers">
+                  {{ column }}
+               </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Villanueva</td>
+                <td>Angela</td>
+                <td>48497787</td>
+                <td>2000-07-23</td>
+                <td>931654987	</td>
+                <td>angela.villanueva@gmail.com</td>
+                <td>Jr. Tacna 2594</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</section>
+<br><br><br><br><br>
+<app-footer></app-footer>
