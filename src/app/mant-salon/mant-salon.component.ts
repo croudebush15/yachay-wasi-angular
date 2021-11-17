@@ -165,6 +165,7 @@ export class MantSalonComponent implements OnInit {
           if (err.status !== 200){
             if(err.status === 400) this.errorMessage = "Error: Profesor ya tiene clase ese día a esa hora.";
             this.isError = true; 
+            this.getData();
           }          
         });
         this.clean();
