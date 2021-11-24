@@ -26,8 +26,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  irClase(classroom: Classroom){
-    this.router.navigate(['clase/' + classroom.id]); 
+  irClase(classroom: Classroom){    
+    this.router.navigateByUrl('clase/' + classroom.id); 
   }
 
 }

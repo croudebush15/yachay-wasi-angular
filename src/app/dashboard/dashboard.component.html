@@ -39,7 +39,7 @@
             height: 4rem;"/>
         </div>  -->
             <div class="card-body" [ngSwitch]="classroom.dayOfWeek">
-              <a href="clase"><h5 class="card-title">{{ classroom.course.name }} ({{ classroom.id }})</h5></a>
+              <h5 class="card-title">{{ classroom.course.name }} ({{ classroom.id }})</h5>
               <span *ngSwitchCase="'lun'">Día: Lunes </span>
               <span *ngSwitchCase="'mar'">Día: Martes </span>
               <span *ngSwitchCase="'mie'">Día: Miércoles </span>
