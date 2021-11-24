@@ -3,17 +3,17 @@
         <h2>Sesión: {{session}}</h2>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
-                <tr>
-                    <th>Nombre</th>
+                <tr>                    
                     <th>Apellido</th>
+                    <th>Nombre</th>
                     <th>Asistió</th>
                     <th>No asistió</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor = "let student of students">
-                    <td>{{ student.firstName }}</td>
-                    <td>{{ student.lastName }}</td>             
+                    <td>{{ student.lastName }}</td>
+                    <td>{{ student.firstName }}</td>             
                     <td>
                         <li style="list-style: none;">
                             <input checked type="radio" name="1">
