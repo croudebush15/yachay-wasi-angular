@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Classroom } from '../common/model/classroom';
-import { ClaseService } from './service/dashboard.service';
 
 @Component({
   selector: 'app-clase',
@@ -18,11 +16,11 @@ export class ClaseComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0,0);
-    //this.id = this.route.snapshot.paramMap.get('id') || "";
-    if(this.id === "") this.router.navigate(['dashboard']); 
+    this.id = this.route.snapshot.paramMap.get('id') || "";
+    //if(this.id === "") this.router.navigate(['dashboard']); 
   }
 
   ir(module: string){
-    this.router.navigate([module.toLowerCase() + '/' + this.id]);
+    this.router.navigate([module.toLowerCase() + "/" + this.id]);
   }
 }
