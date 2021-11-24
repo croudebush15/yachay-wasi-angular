@@ -29,7 +29,6 @@ export class ListaComponent implements OnInit {
   getStudents(){
     this.isLoading = true;
     this.idClassroom = this.route.snapshot.paramMap.get('id') || "";
-    if(this.idClassroom === "") this.router.navigate(['dashboard']); 
 
     setTimeout(() => {
       this.service.getClassroom(this.idClassroom).pipe(

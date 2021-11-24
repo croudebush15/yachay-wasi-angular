@@ -18,7 +18,7 @@ export class ClaseComponent implements OnInit {
 
   ngOnInit(): void {
     window.scroll(0,0);
-    this.id = this.route.snapshot.paramMap.get('id') || "";
+    //this.id = this.route.snapshot.paramMap.get('id') || "";
     if(this.id === "") this.router.navigate(['dashboard']); 
   }
 
