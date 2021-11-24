@@ -2,7 +2,14 @@
 
 <div id="cursos">
     <main class="contenedor">
-        <a href="lista">
+
+        <div class="course-card" *ngFor="let module of classModules" id="redondo" (click)="ir(module)">
+            <img src ="assets/{{module | lowercase}}.png" style="height: 300px;" class="card-img-top" alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title">{{module}}</h2>
+            </div>
+        </div>
+        <!-- <a href="lista">
         <div class="course-card" id="redondo">
             <img src ="assets/alumnos.png" style="height: 300px;" class="card-img-top" alt="Card image cap">
             <div class="card-body">
@@ -25,43 +32,7 @@
                 <a><h2 class="card-title">Reportes</h2></a>
             </div> 
         </div>
-        </a>
+        </a> -->
     </main>
 </div>
-
- <!-- <section class="clase">
-    <div class="contenedor">
-        <div class="row"> 
-
-            <div class="col-md-4" id="espacio">
-                <div class="card-body" id="card-body">
-                    <img src="assets/alumnos.png" alt="" width="400" height="250">
-                    <a href="lista"><h5 class="card-title">Alumnos</h5></a>
-                    <br>
-                    <span>Cantidad de alumnos</span>
-                    <span> 80</span>
-                </div>
-            </div>
-            <div class="col-md-4" id="espacio">
-                <div class="card-body" id="card-body">
-                    <img src="assets/folder.png" alt="" width="400" height="250">
-                    <a href="archivos"><h5 class="card-title">Asistencia
-                    </h5></a>
-                    <br>
-                    <span>Cantidad de alumnos</span>
-                    <span> 80</span>
-                </div>
-            </div>
-            <div class="col-md-4" id="espacio">
-                <div class="card-body" id="card-body">
-                    <img src="assets/notas.png" alt="" width="400" height="250">
-                    <a href="notas"><h5 class="card-title">Reportes</h5></a>
-                    <br>
-                    <span>Cantidad de alumnos</span>
-                    <span> 80</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
 <app-footer></app-footer>

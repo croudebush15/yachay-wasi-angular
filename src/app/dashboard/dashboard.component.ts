@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Classroom } from '../common/model/classroom';
 import { DashboardService } from './service/dashboard.service';
-declare var $:any; 
 
 @Component({
   selector: 'app-dashboard',
@@ -28,7 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   irClase(classroom: Classroom){
-    this.router.navigate(['clase']); 
+    this.router.navigate(['clase/' + classroom.id]); 
   }
 
 }

@@ -13,7 +13,6 @@ export class InicioComponent implements OnInit {
   loginError: boolean = false;
 
     constructor(
-        private route: ActivatedRoute,
         private router: Router,
         private service: InicioService
     ) { }
