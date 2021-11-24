@@ -18,14 +18,14 @@ import { PerfilProfesorComponent } from './perfil-profesor/perfil-profesor.compo
 
 const routes: Routes = [
   { path: '', component: PageComponent },
-  { path: 'inicio', component: InicioComponent },
-  { path: 'clase/:id', component: ClaseComponent },
+  { path: 'inicio', component: InicioComponent },  
   { path: 'profesores', component: MantProfesorComponent, canActivate:[AdminGuard] },
   { path: 'cursos', component: MantCursoComponent, canActivate:[AdminGuard] },
   { path: 'salones', component: MantSalonComponent, canActivate:[AdminGuard] },
   { path: 'alumnos', component: MantAlumnoComponent, canActivate:[AdminGuard] },
   { path: 'admin', component: MantProfesorComponent, canActivate:[AdminGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
+  { path: 'clase/:id', component: ClaseComponent, canActivate:[AuthGuard] },
   { path: 'lista/:id', component: ListaComponent, canActivate:[AuthGuard] },
   { path: 'asistencia/:id', component: AsistenciaComponent, canActivate:[AuthGuard] },
   // { path: 'asistencia-alumnos', component: AsistenciaAlumnosComponent, canActivate:[AuthGuard] },

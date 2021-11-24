@@ -12,9 +12,7 @@ export class ClaseService {
 
   constructor(private http: HttpClient) { }
 
-  getClassroom(): Observable<any>{
-    
-
+  getClassroom(): Observable<any>{    
     return this.http.get<any>(this.url);
   }
 }
