@@ -274,4 +274,16 @@ export class MantSalonComponent implements OnInit {
     });    
   }
 
+  postStudentClassroom(){
+    let studentsId: number[] = [];
+    this.studentsInClassroom.forEach(student => {
+      studentsId.push(student.id);
+    });
+
+    this.service.registerStudentsInClassroom(studentsId, this.newClassroom.id).subscribe(res => {
+      if (res.status !== 200) this.isError = true;
+      else this.closeModal();
+    });
+  }
+
 }

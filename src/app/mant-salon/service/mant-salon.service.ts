@@ -11,6 +11,7 @@ export class MantSalonService {
 
   private url = `${environment.baseApiUrl}/classroom`;
   private studentsUrl = `${environment.baseApiUrl}/student/classroom`;
+  private registerUrl = `${environment.baseApiUrl}/register`;
 
   constructor(private http: HttpClient) { }
 
@@ -41,5 +42,9 @@ export class MantSalonService {
 
   restoreClassroom(classroom: Classroom): Observable<any>{
     return this.http.post<any>(this.url + "/restore", classroom, {observe: 'response'});
+  }
+
+  registerStudentsInClassroom(idStudents: number[], idClassroom: number): Observable<any>{
+    return this.http.post<any>(this.registerUrl, {idStudents, idClassroom}, {observe: 'response'});
   }
 }
