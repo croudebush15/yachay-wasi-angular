@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'lista/:id', component: ListaComponent, canActivate:[AuthGuard] },
   { path: 'asistencia/:id', component: AsistenciaComponent, canActivate:[AuthGuard] },
   // { path: 'asistencia-alumnos', component: AsistenciaAlumnosComponent, canActivate:[AuthGuard] },
-  { path: 'reporte', component: ReporteComponent, canActivate:[AuthGuard] },
+  { path: 'reportes/:id', component: ReporteComponent, canActivate:[AuthGuard] },
   { path: 'perfil-profesor', component: PerfilProfesorComponent, canActivate:[AuthGuard] },
 ];
 

@@ -61,13 +61,12 @@ export class MantSalonComponent implements OnInit {
     window.scroll(0,0);
     this.getData(); 
     this.errorMessage = "Error: Ingreso Inválido";
-    
-    
+        
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.allStudents.slice())
+        map(name => name ? this._filter(name) : this.selectableStudents.slice())
       );
   }
 
@@ -76,9 +75,8 @@ export class MantSalonComponent implements OnInit {
   }
 
   private _filter(name: string): Student[] {
-    //this.selectableStudents = this.allStudents.filter(student => !this.studentsInClassroom.includes(student)); 
     const filterValue = name.toLowerCase();
-    return this.allStudents.filter(student => student.fullName.toLowerCase().includes(filterValue));
+    return this.selectableStudents.filter(student => student.fullName.toLowerCase().includes(filterValue));
   }
 
   getData(){
@@ -241,7 +239,7 @@ export class MantSalonComponent implements OnInit {
     setTimeout(() => {
       this.service.getStudentsInClassroom(classroom).subscribe(res => {
         this.studentsInClassroom = res.body;
-        
+        this.updateSelectableStudents();        
         this.studentsInClassroom.forEach(student=> {
           student.fullName = student.firstName + " " + student.lastName;
        });             
@@ -249,6 +247,15 @@ export class MantSalonComponent implements OnInit {
       });
     }, 500);              
     this.newClassroom = classroom;           
+  }
+
+  updateSelectableStudents(){
+    this.selectableStudents = this.allStudents.slice();
+    const selectableStudentsIds: number[] = [];
+    for (var student of this.studentsInClassroom) {
+      selectableStudentsIds.push(student.id);
+    }
+    this.selectableStudents = this.selectableStudents.filter(student => !selectableStudentsIds.includes(student.id));    
   }
 
   public onValChange(status: boolean) {
@@ -265,6 +272,7 @@ export class MantSalonComponent implements OnInit {
       this.errorMessage = "Error: Ingreso Inválido";
       this.isError = true;
     } 
+    this.updateSelectableStudents();
   }
 
   removeStudentClassroom(student: Student){ 
@@ -272,6 +280,7 @@ export class MantSalonComponent implements OnInit {
     this.studentsInClassroom.forEach((value, index) => {
       if(value==student) this.studentsInClassroom.splice(index,1);
     });    
+    this.updateSelectableStudents();
   }
 
   postStudentClassroom(){
