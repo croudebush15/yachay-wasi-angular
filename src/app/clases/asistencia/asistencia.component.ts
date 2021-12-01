@@ -28,8 +28,7 @@ export class AsistenciaComponent implements OnInit {
 
   ngOnInit(): void {    
     this.getStudents();
-    this.isLoading = false;
-    this.getCurrentSession();
+    this.isLoading = false;    
   }
 
   getStudents(){
@@ -43,8 +42,7 @@ export class AsistenciaComponent implements OnInit {
       ).subscribe(res => {
         this.students = res.body;        
       });
-      this.getLessons();
-      
+      this.getLessons();      
     }, 500);    
       
   }
@@ -56,8 +54,8 @@ export class AsistenciaComponent implements OnInit {
         this.lessons.forEach((lesson, index)=> {
           lesson.lessonNumber = index;
        });
-      });   
-      this.getCurrentSession();
+       this.getCurrentSession();
+      });         
     }, 100);
      
   }
@@ -65,7 +63,8 @@ export class AsistenciaComponent implements OnInit {
   getCurrentSession(){
     //console.log("Current session gotten");
     let today = new Date();
-    this.selectedSession = this.lessons.find(lesson => lesson.date > today) || new Lesson();        
+    this.selectedSession = this.lessons.find(lesson => lesson.date > today) || new Lesson();     
+    if (this.selectedSession.date === null) this.getCurrentSession();   
   }
 
   selectSession(session: Lesson){
