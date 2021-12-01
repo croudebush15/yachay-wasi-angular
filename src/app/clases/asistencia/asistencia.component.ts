@@ -20,17 +20,16 @@ export class AsistenciaComponent implements OnInit {
   students: Student[] = [];
   lessons: Lesson[] = [];
   sessions = ["1","2","3"];
-  selectedSession: number = 0;
+  selectedSession: Lesson = new Lesson();
 
   constructor(private studentService: ListaAlumnosService,
     private attendanceService: AsistenciaService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+    private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.getCurrentSession();
+  ngOnInit(): void {    
     this.getStudents();
     this.isLoading = false;
+    this.getCurrentSession();
   }
 
   getStudents(){
@@ -45,21 +44,32 @@ export class AsistenciaComponent implements OnInit {
         this.students = res.body;        
       });
       this.getLessons();
-    }, 500);        
+      
+    }, 500);    
+      
   }
 
   getLessons(){
-    this.attendanceService.getLessonsForClassroom(this.idClassroom).subscribe(res => {
-      this.lessons = res.body;
-    });
+    setTimeout(() => {
+      this.attendanceService.getLessonsForClassroom(this.idClassroom).subscribe(res => {
+        this.lessons = res.body;
+        this.lessons.forEach((lesson, index)=> {
+          lesson.lessonNumber = index;
+       });
+      });   
+      this.getCurrentSession();
+    }, 100);
+     
   }
 
   getCurrentSession(){
-    this.selectedSession = 1;
+    //console.log("Current session gotten");
+    let today = new Date();
+    this.selectedSession = this.lessons.find(lesson => lesson.date > today) || new Lesson();        
   }
 
-  selectSession(session: string){
-    //this.selectedSession = session;
+  selectSession(session: Lesson){
+    this.selectedSession = session;
   }
 
 }

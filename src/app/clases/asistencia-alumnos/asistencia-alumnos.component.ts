@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Lesson } from 'src/app/common/model/lesson';
 import { Student } from 'src/app/common/model/student';
 
 @Component({
@@ -9,7 +10,7 @@ import { Student } from 'src/app/common/model/student';
 export class AsistenciaAlumnosComponent implements OnInit {
 
   @Input() students: Student[] = [];
-  @Input() session: number | undefined;
+  @Input() session: Lesson = new Lesson();
 
   constructor() { }
 

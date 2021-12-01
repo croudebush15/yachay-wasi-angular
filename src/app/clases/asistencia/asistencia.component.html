@@ -13,8 +13,9 @@
                 <ol class="chapters list-large">
                     <h4>Sesiones</h4>
                     <hr>
-                    <li *ngFor = "let session of sessions" style="list-style-type: none" (click)="selectSession(session)">
-                        <a class="chapter-title" style="color:black">Sesión {{session}}</a>
+                    <li *ngFor = "let session of lessons; index as i" style="list-style-type: none" (click)="selectSession(session)">
+                        <a class="chapter-title" style="color:black">Sesión {{i + 1}}: </a> 
+                        <p class="sub-header">{{session.date}}</p>
                     </li>
                    <!--  <li style="list-style-type: none">
                         <a class="chapter-title" style="color:black">Sesión 01</a>

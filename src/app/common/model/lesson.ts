@@ -1,4 +1,5 @@
 export class Lesson {
     id!: number;
-    date!: Date;    
+    date!: Date; 
+    lessonNumber!: number;   
 }

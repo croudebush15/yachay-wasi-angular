@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AsistenciaService {
 
-  private lessonsUrl = `${environment.baseApiUrl}/lessons`;
+  private lessonsUrl = `${environment.baseApiUrl}/lesson`;
 
   constructor(private http: HttpClient) { }
 
