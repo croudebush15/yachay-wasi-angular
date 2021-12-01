@@ -18,6 +18,7 @@
            		   <div class="div">
                         <a>Nombre</a>
            		   		<input type="text" class="Name" disabled>
+                      <p>{{user.firstName}}</p>
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -27,6 +28,7 @@
            		   <div class="div">
                         <a>Apellido</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.lastName}}</p>
             	   </div>
             	</div>
                 <div class="input-div pass">
@@ -36,6 +38,7 @@
                     <div class="div">
                       <a>Documento de identidad</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.document_number}}</p>
                     </div>
                  </div>
                  <div class="input-div pass">
@@ -45,6 +48,7 @@
                     <div class="div">
                       <a>Fecha de nacimiento</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.birthDate}}</p>
                      </div>
                 </div>
                 <div class="input-div pass">
@@ -54,6 +58,7 @@
                     <div class="div">
                       <a>Teléfono</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.phone}}</p>
                      </div>
                 </div>
                 <div class="input-div pass">
@@ -63,6 +68,7 @@
                     <div class="div">
                       <a>Correo</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.email}}</p>
                      </div>
                 </div>
                 <div class="input-div pass">
@@ -72,26 +78,10 @@
                     <div class="div">
                       <a>Dirección</a>
                     <input type="text" class="input" disabled>
+                    <p>{{user.address}}</p>
                      </div>
                 </div>
-                <div class="input-div pass">
-                    <div class="i"> 
-                        <fa-icon [icon]="faFire"></fa-icon>
-                    </div>
-                    <div class="div">
-                      <a>Estado</a>
-                    <input type="text" class="input" disabled>
-                     </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <fa-icon [icon]="faBuilding"></fa-icon>
-                    </div>
-                    <div class="div">
-                      <a>Rol</a>
-                    <input type="text" class="input" disabled>
-                     </div>
-                </div>
+                
                 <br>
             </form>
         </div>

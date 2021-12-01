@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faUser, faIdCard,faBirthdayCake, faPhone, faEnvelope, faLocationArrow, faFire, faBuilding} from '@fortawesome/free-solid-svg-icons';
+import { Teacher } from '../common/model/teacher';
+import { PerfilService } from './service/perfil.service';
 
 @Component({
   selector: 'app-perfil-profesor',
@@ -17,10 +19,19 @@ export class PerfilProfesorComponent implements OnInit {
   faFire = faFire;
   faBuilding = faBuilding;
 
+  user: Teacher = new Teacher;
 
-  constructor() { }
+
+  constructor(private service: PerfilService) { }
 
   ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(){
+    this.service.getUser().subscribe(res => {
+      this.user = res.body;
+    });
   }
 
 }

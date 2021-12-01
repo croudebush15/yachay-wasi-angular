@@ -9,7 +9,7 @@ import { Student } from 'src/app/common/model/student';
 export class AsistenciaAlumnosComponent implements OnInit {
 
   @Input() students: Student[] = [];
-  @Input() session: string = "";
+  @Input() session: number | undefined;
 
   constructor() { }
 
