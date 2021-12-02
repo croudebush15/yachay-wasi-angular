@@ -17,4 +17,15 @@ export class AsistenciaAlumnosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  checkState(event: any, el: any) {
+    event.preventDefault();
+      if (el.checked === true) {
+        el.checked = false;
+      } else {
+        el.checked = true;
+      }
+    
+  }
+
+
 }

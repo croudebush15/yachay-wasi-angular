@@ -17,10 +17,10 @@
                     <td>{{ student.lastName }}</td>
                     <td>{{ student.firstName }}</td>                                                        
                     <td>      
-                        <mat-radio-button value="1" [name]="student.lastName">Asistió</mat-radio-button>                
+                        <mat-radio-button #button value="1" [name]="student.lastName" (click)="checkState($event, button)">Asistió</mat-radio-button>                
                     </td>                        
                     <td>
-                        <mat-radio-button value="2" [name]="student.lastName">No asistió</mat-radio-button>
+                        <mat-radio-button #button2 value="2" [name]="student.lastName" (click)="checkState($event, button2)">No asistió</mat-radio-button>
                     </td>
                 
                 </tr>
