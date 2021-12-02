@@ -24,6 +24,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 import {MatFormFieldModule } from '@angular/material/form-field'; 
+import {MatRadioModule} from '@angular/material/radio'; 
 import { MatInputModule } from '@angular/material/input';
 import { MantCursoComponent } from './mant-curso/mant-curso.component';
 import { MantSalonComponent } from './mant-salon/mant-salon.component';
@@ -69,7 +70,8 @@ import { PerfilProfesorComponent } from './perfil-profesor/perfil-profesor.compo
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatRadioModule
   ],
   providers: [
     InicioService,

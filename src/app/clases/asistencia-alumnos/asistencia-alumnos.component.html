@@ -1,6 +1,7 @@
 <section id="vantage" class="description main-section">
     <div class="container">
         <h2 *ngIf = "session.id">Sesión: {{session.date}}</h2>
+        
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>                    
@@ -12,43 +13,21 @@
             </thead>
             <tbody>
                 <tr *ngFor = "let student of students">
+                                      
                     <td>{{ student.lastName }}</td>
-                    <td>{{ student.firstName }}</td>             
+                    <td>{{ student.firstName }}</td>                                                        
+                    <td>      
+                        <mat-radio-button value="1" [name]="student.lastName">Asistió</mat-radio-button>                
+                    </td>                        
                     <td>
-                        <li style="list-style: none;">
-                            <input checked type="radio" name="1">
-                            <label></label>
-                            <div class="bullet">
-                              <div class="line zero"></div>
-                              <div class="line one"></div>
-                              <div class="line two"></div>
-                              <div class="line three"></div>
-                              <div class="line four"></div>
-                              <div class="line five"></div>
-                              <div class="line six"></div>
-                              <div class="line seven"></div>
-                            </div>
-                          </li>
+                        <mat-radio-button value="2" [name]="student.lastName">No asistió</mat-radio-button>
                     </td>
-                    <td>
-                        <li style="list-style: none;">
-                            <input checked type="radio" name="1">
-                            <label></label>
-                            <div class="bullet">
-                              <div class="line zero"></div>
-                              <div class="line one"></div>
-                              <div class="line two"></div>
-                              <div class="line three"></div>
-                              <div class="line four"></div>
-                              <div class="line five"></div>
-                              <div class="line six"></div>
-                              <div class="line seven"></div>
-                            </div>
-                          </li>
-                    </td>
+                
                 </tr>
+            
             </tbody>
         </table>  
+    
     </div>
 </section>
 
