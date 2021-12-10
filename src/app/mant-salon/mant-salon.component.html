@@ -126,6 +126,19 @@
             <mat-label>Duración Horas</mat-label>
             <input matInput placeholder="Cantidad Horas" type="number" required [(ngModel)]="newClassroom.durationHours" name="durationHours">
           </mat-form-field>
+          <br>
+          <mat-form-field *ngIf="modal === allModalTypes.create;">
+            <mat-label>Cantidad de Sesiones</mat-label>
+            <input matInput placeholder="Cantidad Sesiones" type="number" required [(ngModel)]="newClassroomQuantityLessons" name="durationHours">
+          </mat-form-field>
+          <br>
+          <mat-form-field *ngIf="modal === allModalTypes.create;">
+            <mat-label>Día de Comienzo</mat-label>
+            <input matInput required [matDatepicker]="picker" [matDatepickerFilter]="dayOfWeekFilter" placeholder="Fecha de Comienzo"
+            [(ngModel)]="newClassroomStartDate" (dateChange)="setDateToString($event.value)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>            
+          </mat-form-field>
 
         </div>
         <div class="modal-footer">

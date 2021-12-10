@@ -28,8 +28,8 @@ export class MantSalonService {
     return this.http.post<any>(this.studentsUrl, classroom, {observe: 'response'});
   }
   
-  createClassrooms(classroom: Classroom): Observable<any>{    
-    return this.http.post<any>(this.url, classroom, {observe: 'response'});
+  createClassrooms(classroom: Classroom, quantityLessons: number, startDate: string): Observable<any>{    
+    return this.http.post<any>(this.url, {classroom, quantityLessons, startDate}, {observe: 'response'});
   }
 
   editClassroom(classroom: Classroom): Observable<any>{

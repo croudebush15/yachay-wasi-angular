@@ -11,6 +11,7 @@ import { MantCursoService } from '../mant-curso/service/mant-curso.service';
 import { MantSalonService } from './service/mant-salon.service';
 import {map, startWith} from 'rxjs/operators';
 import { MantAlumnoService } from '../mant-alumno/service/mant-alumno.service';
+import { DateFilterFn } from '@angular/material/datepicker';
 declare var $:any; 
 
 @Component({
@@ -40,6 +41,9 @@ export class MantSalonComponent implements OnInit {
   daysOfWeek = ["lun","mar","mie","jue","vie"];
   classrooms: Classroom[] = [];
   newClassroom: Classroom = new Classroom();
+  newClassroomQuantityLessons: number = 10;
+  newClassroomStartDate!: Date;
+  newClassroomFormattedStartDate: string = "";
   courses: Course[] = [];
   teachers: Teacher[] = [];
   allStudents: Student[] = [];
@@ -119,13 +123,18 @@ export class MantSalonComponent implements OnInit {
   }
 
   createClassroom(){
-    if(this.selectedCourse !== 0 || this.selectedTeacher !== 0){
+    console.log("test1: " + this.newClassroomStartDate);
+    if(this.selectedCourse !== 0 &&
+       this.selectedTeacher !== 0 &&
+       this.newClassroomQuantityLessons !== 0 &&
+       this.newClassroomFormattedStartDate !== ""
+      ){
       let selectedCourseObject = this.courses.find(course=>course.id == this.selectedCourse);
       let selectedTeacherObject = this.teachers.find(teacher=>teacher.idTeacher == this.selectedTeacher);
-      if (selectedCourseObject !== undefined || selectedTeacherObject !== undefined) {
+      if (selectedCourseObject !== undefined && selectedTeacherObject !== undefined) {
         this.newClassroom.course = selectedCourseObject || new Course();
         this.newClassroom.teacher = selectedTeacherObject || new Teacher();
-        this.service.createClassrooms(this.newClassroom).subscribe(res => {
+        this.service.createClassrooms(this.newClassroom, this.newClassroomQuantityLessons, this.newClassroomFormattedStartDate).subscribe(res => {
           this.getData();
           this.closeModal();  
           return;    
@@ -219,6 +228,7 @@ export class MantSalonComponent implements OnInit {
     $('#modal').modal('hide');
     $('#modal-students').modal('hide');
     this.isError = false;
+    this.clean();
   }
 
   restore(classroom: Classroom){
@@ -293,6 +303,36 @@ export class MantSalonComponent implements OnInit {
       if (res.status !== 200) this.isError = true;
       else this.closeModal();
     });
+  }
+
+  dayOfWeekFilter : DateFilterFn<Date | null> = (date: Date | null) => {
+    const day = date?.getDay();
+    switch (this.newClassroom.dayOfWeek){
+      case "lun": {
+        return day === 1        
+      }
+      case "mar": {
+        return day === 2
+      }
+      case "mie": {
+        return day === 3
+      }
+      case "jue": {
+        return day === 4
+      }
+      case "vie": {
+        return day === 5
+      }
+      default: return false;
+    }    
+  }
+
+  setDateToString(event: any){
+    this.newClassroomStartDate = event;
+    this.newClassroomFormattedStartDate = this.newClassroomStartDate.getFullYear()
+     + '-' + (this.newClassroomStartDate.getMonth() + 1)
+      + '-' + this.newClassroomStartDate.getDate();
+    console.log(this.newClassroomFormattedStartDate);
   }
 
 }
