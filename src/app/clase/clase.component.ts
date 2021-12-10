@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ClaseComponent implements OnInit {
 
-  classModules = ["Lista", "Asistencia", "Reportes"];
+  classModules = ["Lista", "Asistencia"];
   public id: string = "";
 
   constructor(private route: ActivatedRoute,
