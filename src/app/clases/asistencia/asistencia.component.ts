@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { Attendance } from 'src/app/common/model/attendance';
 import { Classroom } from 'src/app/common/model/classroom';
 import { Lesson } from 'src/app/common/model/lesson';
 import { Student } from 'src/app/common/model/student';
@@ -20,7 +21,9 @@ export class AsistenciaComponent implements OnInit {
   students: Student[] = [];
   lessons: Lesson[] = [];
   sessions = ["1","2","3"];
-  selectedSession: Lesson = new Lesson();
+  selectedSession: Lesson | undefined;
+  showMessage: boolean = false;
+  message = "";
 
   constructor(private studentService: ListaAlumnosService,
     private attendanceService: AsistenciaService,
@@ -28,7 +31,9 @@ export class AsistenciaComponent implements OnInit {
 
   ngOnInit(): void {    
     this.getStudents();
-    this.isLoading = false;    
+    this.isLoading = false; 
+    this.showMessage = true;
+       
   }
 
   getStudents(){
@@ -43,8 +48,7 @@ export class AsistenciaComponent implements OnInit {
         this.students = res.body;        
       });
       this.getLessons();      
-    }, 500);    
-      
+    }, 500);          
   }
 
   getLessons(){
@@ -54,10 +58,9 @@ export class AsistenciaComponent implements OnInit {
         this.lessons.forEach((lesson, index)=> {
           lesson.lessonNumber = index;
        });
-       this.getCurrentSession();
+       //this.getCurrentSession();
       });         
-    }, 100);
-     
+    }, 100);     
   }
 
   getCurrentSession(){
@@ -69,6 +72,25 @@ export class AsistenciaComponent implements OnInit {
 
   selectSession(session: Lesson){
     this.selectedSession = session;
+  }
+
+  markAttentance(sessionAttendanceMarked: Lesson){
+    this.selectedSession!.attendances  = sessionAttendanceMarked.attendances;
+    this.showMessage = true;
+    this.message = "Guardando..."
+    this.attendanceService.markAttendanceLesson(sessionAttendanceMarked).subscribe(res => {      
+      this.message = "Asistencia guardada."
+    },
+    error => {
+      if (error.status !== '200')
+        this.showMessage = true;
+        this.message = "Error: no se pudo guardar la asistencia."
+    });
+    setTimeout(() => 
+    {
+      this.showMessage = false;
+    }, 5000);
+    
   }
 
 }

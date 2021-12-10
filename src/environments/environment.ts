@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: "https://yachay-wasi.herokuapp.com"
-  //private baseApiUrl = "http://localhost:8082";
+  baseApiUrl: "https://yachay-wasi.herokuapp.com",
+  testApiUrl: "http://localhost:8082"
 };
 
 /*

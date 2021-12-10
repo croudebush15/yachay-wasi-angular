@@ -7,31 +7,61 @@
                 <tr>                    
                     <th>Apellido</th>
                     <th>Nombre</th>
+                    <th>Reporte</th>
                     <th>Asistió</th>
                     <th>No asistió</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor = "let student of students">
-                                      
-                    <td>{{ student.lastName }}</td>
-                    <td>{{ student.firstName }}</td>                                                        
-                    <td>      
-                        <mat-radio-button #button value="1" [name]="student.lastName" (click)="checkState($event, button)">Asistió</mat-radio-button>                
-                    </td>                        
-                    <td>
-                        <mat-radio-button #button2 value="2" [name]="student.lastName" (click)="checkState($event, button2)">No asistió</mat-radio-button>
+            <tbody>                             
+                <tr *ngFor = "let attendance of attendances" class="container">                
+                    <mat-radio-group                        
+                        class="row"
+                        [(ngModel)]="attendance.presentInClass">
+                    <td class="col-3">{{ attendance.student.lastName }}</td>
+                    <td class="col-3">{{ attendance.student.firstName }}</td>
+                    <td class="col-2">
+                        <fa-icon [icon]="faPen" (click)="openReport(attendance)"></fa-icon>
                     </td>
-                
-                </tr>
-            
+                    <td class="col-2">      
+                        <mat-radio-button #button [value]="true" [name]="attendance.student.lastName" (click)="checkState($event, button, attendance)"></mat-radio-button>                
+                    </td>                        
+                    <td class="col-2">
+                        <mat-radio-button #button2 [value]="false" [name]="attendance.student.firstName"  (click)="checkState($event, button2, attendance)"></mat-radio-button>
+                    </td>
+                    </mat-radio-group>                                                                    
+                </tr>         
             </tbody>
         </table>  
-    
+        <div class="row justify-content-end">
+            <button type="button" class="btn btn-primary col-3 offset-md-9" (click)="markAttentance()">Guardar Asistencia</button>
+        </div>
     </div>
 </section>
 
 
   
-  
+ <!-- Modal -->
+ <div id="modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="modal-header">                  
+        <h5 class="modal-title">Reporte: {{session.date}}</h5>      
+          <button type="button" class="btn-close" (click)="closeModal()"></button>          
+        </div>
+        <form ngNativeValidate (ngSubmit)=markAttentance()>
+          <div class="modal-body">                      
+            <div class="form-group">
+              <span>{{selectedAttendance.student.lastName}}, {{selectedAttendance.student.firstName}}</span>
+              <textarea class="form-control" name="exampleFormControlTextarea1" rows="3" placeholder="Reporte de la sesion"
+              [(ngModel)]="selectedAttendance.report"></textarea>
+            </div>                      
+        </div>
+          <div class="modal-footer">     
+            <button type="submit" class="btn btn-primary">Guardar</button>            
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Cerrar</button>            
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
 

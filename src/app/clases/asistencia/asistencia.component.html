@@ -29,10 +29,14 @@
                 </ol>
             </div>
             <div class="col-md-9">
-                <br>
-                <h1 *ngIf=isLoading>Cargando...</h1>   
-                <app-asistencia-alumnos *ngIf="!isLoading" [students]="students" [session] = "selectedSession"></app-asistencia-alumnos>
+                <br>                   
+                <app-asistencia-alumnos *ngIf="!isLoading && selectedSession"
+                 [students]="students" [session]="selectedSession"
+                 (markAttentanceEmitter)="markAttentance($event)"></app-asistencia-alumnos>
+                 <br>
+                 <h1 class="offset-md-9" *ngIf=showMessage>{{message}}</h1>
             </div>
+            
         </div>
     </div>
 </section>
