@@ -3,11 +3,19 @@
 <div id="cursos">
 
     <main class="contenedor">
-        <div class="course-card" *ngFor="let module of classModules" id="redondo" (click)="ir(module)">
-            <img src="assets/{{module | lowercase}}.png" style="height: 80%;" class="card-img-top"
+        <div class="course-card" id="redondo" (click)="ir('lista')">
+            <img src="assets/lista.png" style="height: 80%;" class="card-img-top"
                 alt="Card image cap">
             <div class="card-body">
-                <h2 class="card-title">{{module + " de alumnos"}}</h2>
+                <h2 class="card-title">Lista de alumnos</h2>
+            </div>
+        </div>
+
+        <div class="course-card" id="redondo" (click)="ir('asistencia')">
+            <img src="assets/asistencia.png" style="height: 80%;" class="card-img-top"
+                alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title">Gestión de alumnos</h2>
             </div>
         </div>
 
