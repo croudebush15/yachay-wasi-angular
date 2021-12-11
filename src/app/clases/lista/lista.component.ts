@@ -16,7 +16,7 @@ export class ListaComponent implements OnInit {
   idClassroom: string = "";
   currentClassroom: Classroom = new Classroom();
   students: Student[] = [];
-  headers = ["Apellido","Nombre", "Número Documento", "Fecha de Nacimiento", "Teléfono", "Correo", "Dirección","Asistencia"];
+  headers = ["Apellido","Nombre", "Número Documento", "Fecha de Nacimiento", "Teléfono", "Correo", "Dirección"];
 
   constructor(private service: ListaAlumnosService,
               private route: ActivatedRoute,
